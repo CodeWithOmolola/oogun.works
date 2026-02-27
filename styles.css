@@ -2082,6 +2082,129 @@ a:hover {
     position: absolute;
     left: 0;
 }
+/* =========================
+   ORE MI PRODUCT PAGE
+   ========================= */
+
+/* Single-item video grid — full width */
+.campaign-images-grid:has(.grid-image:only-child) {
+    grid-template-columns: 1fr;
+}
+
+.campaign-images-grid:has(.grid-image:only-child) .grid-image {
+    height: auto;
+    max-height: 680px;
+}
+
+.campaign-images-grid:has(.grid-image:only-child) .grid-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Video element baseline */
+.grid-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================
+   CAPTIONED IMAGE GRID
+   ========================= */
+.ore-captioned .grid-image {
+    height: auto;
+}
+
+.ore-captioned .grid-figure {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ore-captioned .grid-caption {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gray);
+    padding-bottom: 0.5rem;
+}
+
+.ore-captioned .grid-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+/* =========================
+   IMAGE GALLERY
+   ========================= */
+.ore-gallery {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+}
+
+.ore-gallery-main {
+    position: relative;
+    flex: 1;
+    height: 600px;
+    overflow: hidden;
+    background-color: var(--color-off-white);
+}
+
+.ore-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.ore-gallery-main img.fade {
+    opacity: 0;
+}
+
+.ore-gallery-counter {
+    position: absolute;
+    bottom: var(--space-sm);
+    right: var(--space-sm);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--color-white);
+    background-color: rgba(10, 10, 10, 0.45);
+    padding: 0.35rem 0.75rem;
+}
+
+.ore-gallery-prev,
+.ore-gallery-next {
+    background: none;
+    border: 1px solid var(--color-gray-lighter);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 1rem 1.25rem;
+    color: var(--color-charcoal);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.ore-gallery-prev:hover,
+.ore-gallery-next:hover {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-color: var(--color-black);
+}
+
+@media (max-width: 768px) {
+    .ore-gallery-main {
+        height: 320px;
+    }
+}
+
+
 
 /* =========================
    GALLERY PAGE
