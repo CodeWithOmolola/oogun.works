@@ -275,6 +275,8 @@
         document.querySelector('.ore-gallery-prev').addEventListener('click', () => goTo(current - 1));
         document.querySelector('.ore-gallery-next').addEventListener('click', () => goTo(current + 1));
         document.getElementById('gallery-total').textContent = images.length;
+        document.getElementById('gallery-total').textContent = images.length;
+        img.src = images[0].src; // ← add this
 
     </script>
 </body>
