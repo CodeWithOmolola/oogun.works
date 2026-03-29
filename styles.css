@@ -2640,6 +2640,76 @@ body > * {
         gap: 1rem;
     }
 
+    
+
+/* =========================
+   PRINT STYLES
+   ========================= */
+@media print {
+    .nav,
+    .filter-container,
+    .work-link,
+    .campaign-link,
+    .product-link,
+    .footer {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .hero-minimal,
+    .page-header {
+        margin-top: 0;
+    }
+}
+
+/* =========================
+   ACCESSIBILITY
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
+}
+
+/* Screen reader only content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Selection styling */
+::selection {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+::-moz-selection {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
