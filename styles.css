@@ -2946,3 +2946,9 @@ button:focus-visible {
         padding-right: 1rem;
     }
 }
+
+@media (max-width: 768px) {
+    .specs-grid-heated {
+        grid-template-columns: 1fr;
+    }
+}
