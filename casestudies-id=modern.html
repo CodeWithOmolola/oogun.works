@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Blnd Case Study - Omolola Ogunlade</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/djmffrvpg/image/upload/v1770691043/ow-fav_tmrh2s.png">
+
+</head>
+
+<body style="background-color: #004d91; color: white;">
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img
+                src="https://res.cloudinary.com/djmffrvpg/image/upload/v1770690646/ow.logo_bukiww.png">
+            </a>
+            <div class="nav-links">
+                <a href="campaigns.html" class="nav-link">CAMPAIGNS</a>
+                <a href="casestudies.html" class="nav-link">CASE STUDIES</a>
+                <a href="product-innovation.html" class="nav-link">PRODUCT</a>
+                <a href="mailto:projectsoo@outlook.com" class="nav-link-contact" style="color: white; boarder: 2px solid #fffff;">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Case Study Hero -->
+    <section class="case-hero-section">
+        <div class="case-hero-grid">
+            <div class="case-hero-text">
+                <span class="case-category" style="color: white;">STRATEGIC ANALYSIS</span>
+                <h1 class="case-title">Modern Blnd</h1>
+                <p class="case-subtitle" style="color: white;">A speculative product design project exploring corporate collaboration as a creative act.</p>
+            </div>
+        </div>
+
+        <div class="case-hero-image">
+
+  <canvas id="c"></canvas>
+
+  <script>
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+
+  let W, H, dpr, particles = [], textPixels = [], animFrame;
+  let phase = 'scatter';
+  let phaseTimer = 0;
+  const FORM_DURATION = 220;
+  const TRANSITION_SPEED = 0.075;
+  const FORMED_THRESHOLD = 1.2;
+
+  const BLUES = [
+    [0,  75, 199],
+    [0,  55, 170],
+    [10, 90, 220],
+    [0, 100, 230],
+    [30,110, 210],
+    [0,  35, 140],
+  ];
+
+  function resize() {
+    dpr = window.devicePixelRatio || 1;
+    // ✅ Size to parent container, not the viewport
+    const container = canvas.parentElement;
+    W = container.offsetWidth;
+    H = container.offsetHeight;
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width  = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+    sampleText();
+    initParticles();
+  }
+
+  function sampleText() {
+    textPixels = [];
+    const offscreen = document.createElement('canvas');
+    offscreen.width  = W;
+    offscreen.height = H;
+    const oc = offscreen.getContext('2d');
+
+    // ✅ Font size relative to container dimensions
+    const fs = Math.min(W / 5.2, H / 1.6);
+    oc.font = `900 ${fs}px 'Bebas Neue', sans-serif`;
+    oc.fillStyle = '#000';
+    oc.textAlign = 'center';
+    oc.textBaseline = 'middle';
+    oc.fillText('Modern Blnd', W / 2, H / 2);
+
+    const data = oc.getImageData(0, 0, W, H).data;
+    const step = 4;
+    for (let y = 0; y < H; y += step) {
+      for (let x = 0; x < W; x += step) {
+        const idx = (y * W + x) * 4;
+        if (data[idx + 3] > 128) textPixels.push({ x, y });
+      }
+    }
+  }
+
+  class Particle {
+    constructor(tx, ty) {
+      this.tx = tx;
+      this.ty = ty;
+      const c = BLUES[Math.floor(Math.random() * BLUES.length)];
+      this.r = c[0]; this.g = c[1]; this.b = c[2];
+      this.opacity = Math.random() * 0.45 + 0.55;
+      this.size = Math.random() * 1.3 + 0.5;
+      this.formed = false;
+      this.scatter();
+    }
+
+    scatter() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.scatterVx = (Math.random() - 0.5) * 7;
+      this.scatterVy = (Math.random() - 0.5) * 7;
+      this.formed = false;
+    }
+
+    update(p) {
+      if (p === 'form') {
+        this.x += (this.tx - this.x) * TRANSITION_SPEED;
+        this.y += (this.ty - this.y) * TRANSITION_SPEED;
+        this.formed = Math.abs(this.tx - this.x) < FORMED_THRESHOLD &&
+                      Math.abs(this.ty - this.y) < FORMED_THRESHOLD;
+      } else if (p === 'scatter') {
+        this.x += this.scatterVx;
+        this.y += this.scatterVy;
+        this.scatterVx += (Math.random() - 0.5) * 0.25;
+        this.scatterVy += (Math.random() - 0.5) * 0.25;
+        this.scatterVx *= 0.975;
+        this.scatterVy *= 0.975;
+      } else if (p === 'hold') {
+        this.x += Math.sin(Date.now() * 0.0008 + this.tx * 0.05) * 0.08;
+        this.y += Math.cos(Date.now() * 0.0008 + this.ty * 0.05) * 0.08;
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    if (!textPixels.length) return;
+    const maxP = Math.min(textPixels.length, 4000);
+    const step  = Math.max(1, Math.floor(textPixels.length / maxP));
+    for (let i = 0; i < textPixels.length; i += step) {
+      particles.push(new Particle(textPixels[i].x, textPixels[i].y));
+    }
+  }
+
+  function startScatter() {
+    phase = 'scatter';
+    phaseTimer = 0;
+    particles.forEach(p => {
+      p.scatterVx = (Math.random() - 0.5) * 9;
+      p.scatterVy = (Math.random() - 0.5) * 9;
+      p.formed = false;
+    });
+    setTimeout(() => { phase = 'form'; phaseTimer = 0; }, 1300);
+  }
+
+  function loop() {
+    ctx.fillStyle = 'rgba(255,255,255,0.28)';
+    ctx.fillRect(0, 0, W, H);
+    phaseTimer++;
+
+    if (phase === 'form') {
+      let allFormed = true;
+      particles.forEach(p => { p.update('form'); if (!p.formed) allFormed = false; p.draw(); });
+      if (allFormed || phaseTimer > 200) { phase = 'hold'; phaseTimer = 0; }
+    } else if (phase === 'hold') {
+      particles.forEach(p => { p.update('hold'); p.draw(); });
+      if (phaseTimer > FORM_DURATION) startScatter();
+    } else if (phase === 'scatter') {
+      particles.forEach(p => { p.update('scatter'); p.draw(); });
+    }
+    animFrame = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(animFrame);
+    resize();
+    phase = 'form'; phaseTimer = 0;
+    loop();
+  });
+
+  // ✅ Wait for layout to settle before measuring container
+  requestAnimationFrame(() => {
+    resize();
+    setTimeout(() => { phase = 'form'; }, 600);
+    loop();
+  });
+  </script>
+</div>
+        </div>
+    </section>
+
+    <!-- Brief -->
+    <section class="case-section" style="margin-bottom: var(--space-xs);">
+        <div class="case-layout">
+            <div class="case-sidebar">
+                <h2 class="case-section-num" style="color: white;">01</h2>
+                <h3 class="case-section-title">BRIEF</h3>
+            </div>
+            <div class="case-content">
+                <p class="case-text-large">
+                  Modern Blnd is a design exercise rooted in one question: what if the world's biggest companies stopped competing for the same consumer and started building for them together? Each product in this collection begins where two brand identities overlap and asks what could exist in that space; as a genuine response to how people live, move, and feel.
+                  <br><br>
+                  Technology-informed consumers don't experience brands in silos; they expect their tools, spaces, and objects to work in concert. Modern Blnd uses speculative cross-industry partnerships to imagine products that serve this reality, designed with the rigor of real-world constraints and the freedom of original thinking.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Design Philosophy Section -->
+    <section class="detail-content-section">
+        <div class="content-layout">
+            <div class="content-sidebar">
+                <h2 class="section-label" style="color: white;">02</h2>
+                <h3 class="section-heading">DESIGN PHILOSOPHY</h3>
+            </div>
+            <div class="content-main">
+                <p class="content-text-large">
+                  Every product in this collection is built from a human-centered foundation informed by Behavioral Science, prioritizing how people actually interact with objects over how objects are expected to perform. The guiding principle across all three products is that good design should be emotionally resonant and technically sound in equal measure, accessible without being reductive, and innovative without being alienating.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Products -->
+    <section class="case-section bg-dark" style="background-color: white; color: #004d91;">
+        <div class="case-layout-full">
+            <h2 class="case-heading-center">THE PRODUCTS</h2>
+            
+            <div class="values-grid-md">
+              <div class="value-card-md" style="--card-bg: url('https://res.cloudinary.com/djmffrvpg/image/upload/v1774789712/Allude-DE-Profile_pwmmol.png');">
+                  <h3 class="value-title" style="color: white;">Allude</h3>
+                  <p class="value-text" style="color: white;">
+                    A pocket-sized AI device inspired by the Magic 8 Ball that bridges social media and intelligent search through an intuitive shake interface. Small enough for a keychain, Allude connects Google's knowledge base with X's social data. Shake twice for personalized responses, three times for information; with native integration across major platforms.
+                    <br><br>
+                    <a href="pro-id=allude.html" style="color: white;">[View Allude →]</a>
+                  </p>
+              </div>
+              <div class="value-card-md" style="--card-bg: url('https://res.cloudinary.com/djmffrvpg/image/upload/v1774789795/Heated_four_1_nk2kej.jpg');">
+                  <h3 class="value-title" style="color: white;">Heated</h3>
+                  <p class="value-text" style="color: white;">
+                    A mushroom-form lamp, candle warmer and incense holder that brings biophilic calm and smart ambiance control into everyday domestic life. Smart touch controls, an engineered ventilation system, and modular dual-function design make Heated as thoughtful as it is beautiful. A collaboration by IKEA & Adobe, rooted in the belief that atmosphere is a design problem worth solving.
+                    <br><br>
+                    <a href="pro-id=heated.html" style="color: white;">[View Heated →]</a>
+                  </p>
+              </div>
+              <div class="value-card-md" style="--card-bg: url('https://res.cloudinary.com/djmffrvpg/image/upload/v1774714474/Soul-Page-Banner_ua8yx1.png');">
+                  <span class="value-number" style="color: white;">COMING SOON</span>
+                  <h3 class="value-title" style="color: white;">SoulSight Music</h3>
+                  <p class="value-text" style="color: white;">
+                   IBM & Beats | A circular smart speaker and music application designed to make listening feel like an experience rather than a function. Real-time LED visualization responds to rhythm, beat, and mood, while 360° surround sound with a companion app experience currently in development.
+                  </p>
+              </div>
+            </div>  
+            
+        </div>
+    </section>
+    
+    <!-- Design Approach Section -->
+    <section class="detail-content-section">
+        <div class="content-layout">
+            <div class="content-sidebar">
+                <h2 class="section-label" style="color: white;">03</h2>
+                <h3 class="section-heading">DESIGN APPROACH</h3>
+            </div>
+            <div class="content-main">
+                <p class="content-text-large">
+                  Each product was developed through a complete design process: identifying the cultural and functional gap a collaboration could credibly fill, developing concepts grounded in both brand identities, and modeling finished products in AutoCAD with hardware specifications, UI design, and manufacturing constraints factored in at every stage. This is speculative work built to real-world standards.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="detail-content-section bg-light" style="background-color: #004d91;">
+        <div class="content-layout">
+            <div class="content-sidebar">
+                <h2 class="section-label" style="color:white;">04</h2>
+                <h3 class="section-heading">PROCESS </h3>
+            </div>
+            <div class="content-main">
+                <ul class="model-list">
+                    <li>01: Identify the gap a collaboration could credibly fill</li>
+                    <li>02: Develop concept grounded in both brand identities</li>
+                    <li>03: Design for user behavior, not just user preference</li>
+                    <li>04: Model in AutoCAD with real manufacturing constraints</li>
+                    <li>05: Refine UI, hardware specifications, and finish options</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Tools Section -->
+    <section class="detail-content-section">
+        <div class="content-layout">
+            <div class="content-sidebar">
+                <h2 class="section-label" style="color: white;">05</h2>
+                <h3 class="section-heading">TOOLS</h3>
+            </div>
+            <div class="content-main">
+                <p class="content-text-large">
+                  AutoCAD · Figma · Adobe Illustrator · Adobe InDesign · Blender · Market Research & Analysis
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <p class="footer-copy" style="color:white;">
+                    "medicine works"
+                    <br>
+                    © 2026 Omolola Ogunlade<br>Web Development by Omolola Ogunlade
+                </p>
+            </div>
+            <div class="footer-right">
+                <a href="https://www.linkedin.com/in/omololaogunlade/" class="footer-link">LINKEDIN</a>
+                <a href="mailto:projectsoo@outlook.com" class="footer-link">EMAIL</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
