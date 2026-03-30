@@ -806,7 +806,7 @@ function buildPlTracks(ri){
   const wrap=document.getElementById('plTracks');wrap.innerHTML='';
   r.pl.forEach((t,ti)=>{
     const el=document.createElement('div');el.className='tr';
-    el.innerHTML=`<div class="tr-art">&#127925;</div>
+    el.innerHTML=`<div class="tr-art">❑</div>
     <div class="tr-info"><div class="tr-name">${t.name}</div><div class="tr-artist">${t.artist}</div></div>
     <div style="font-size:10px;color:rgba(255,200,120,0.3);margin-right:6px;">${t.dur}</div>
     <div class="tr-del" data-ti="${ti}">&#215;</div>`;
