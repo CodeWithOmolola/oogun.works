@@ -138,11 +138,12 @@
   function sampleText() {
     textPixels = [];
     const offscreen = document.createElement('canvas');
-    offscreen.width  = W;
-    offscreen.height = H;
+    // ✅ Scale offscreen canvas by dpr too
+    offscreen.width  = W * dpr;
+    offscreen.height = H * dpr;
     const oc = offscreen.getContext('2d');
+    oc.scale(dpr, dpr);
 
-    // ✅ Font size relative to container dimensions
     const fs = Math.min(W / 5.2, H / 1.6);
     oc.font = `900 ${fs}px 'Bebas Neue', sans-serif`;
     oc.fillStyle = '#000';
@@ -150,16 +151,19 @@
     oc.textBaseline = 'middle';
     oc.fillText('Modern Blnd', W / 2, H / 2);
 
-    const data = oc.getImageData(0, 0, W, H).data;
-    const step = 4;
-    for (let y = 0; y < H; y += step) {
-      for (let x = 0; x < W; x += step) {
-        const idx = (y * W + x) * 4;
-        if (data[idx + 3] > 128) textPixels.push({ x, y });
-      }
+    // ✅ Sample from the full scaled canvas
+    const data = oc.getImageData(0, 0, W * dpr, H * dpr).data;
+    const step = Math.max(3, Math.round(dpr * 3));
+    for (let y = 0; y < H * dpr; y += step) {
+        for (let x = 0; x < W * dpr; x += step) {
+            const idx = (y * W * dpr + x) * 4;
+            if (data[idx + 3] > 128) {
+                // ✅ Convert back to logical pixels for particle targets
+                textPixels.push({ x: x / dpr, y: y / dpr });
+            }
+        }
     }
-  }
-
+}
   class Particle {
     constructor(tx, ty) {
       this.tx = tx;
