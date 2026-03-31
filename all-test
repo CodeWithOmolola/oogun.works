@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Allude</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+–blue:#1a72c4;
+–blue-dark:#0d4a8a;
+–white:#fff;
+–ink:#0a0a0a;
+}
+
+body{
+font-family:‘DM Sans’,sans-serif;
+background:#1a1a2e;
+display:flex;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+padding:20px;
+}
+
+/* ═══ DEVICE SHELL ═══ */
+.device{
+width:580px;
+max-width:100%;
+background:#0a0a0a;
+border-radius:18px;
+border:2px solid #2a2a2a;
+overflow:hidden;
+box-shadow:0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(26,114,196,0.2);
+position:relative;
+flex-shrink:0;
+}
+
+/* ═══ STATUS BAR ═══ */
+.statusbar{
+background:#1a72c4;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:5px 12px;
+font-family:‘Space Mono’,monospace;
+font-size:9px;
+color:rgba(255,255,255,0.8);
+letter-spacing:0.05em;
+}
+.status-brand{font-weight:700;color:white;}
+
+/* ═══ SCREENS ═══ */
+.screen{display:none;}
+.screen.active{display:block;}
+
+/* ═══════════════════════════
+HOME SCREEN
+═══════════════════════════ */
+#home-screen .main{
+background:#1a72c4;
+display:flex;
+gap:0;
+height:235px; /* exact match to UX screen */
+overflow:hidden;
+}
+
+/* LEFT: bird + bubbles */
+.home-left{
+flex:1;
+padding:12px 12px 12px;
+border-right:1px solid rgba(255,255,255,0.2);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+gap:0;
+position:relative;
+min-width:0;
+overflow:hidden;
+background:#1a72c4;
+}
+
+.bird-wrap{
+display:flex;
+align-items:flex-end;
+gap:8px;
+margin-top:6px;
+padding-top:0;
+}
+.bird-placeholder{
+width:52px;
+height:52px;
+border-radius:10px;
+background:rgba(255,255,255,0.15);
+border:1.5px dashed rgba(255,255,255,0.35);
+cursor:pointer;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:3px;
+flex-shrink:0;
+transition:transform 0.2s, background 0.2s;
+overflow:hidden;
+}
+.bird-placeholder:hover{transform:scale(1.08);background:rgba(255,255,255,0.22);}
+.bird-placeholder img{
+width:100%;height:100%;object-fit:cover;border-radius:8px;display:none;
+}
+.bird-placeholder-label{
+font-size:7px;
+color:rgba(255,255,255,0.5);
+font-family:‘Space Mono’,monospace;
+letter-spacing:0.05em;
+text-align:center;
+line-height:1.3;
+}
+.bird-hint{
+font-size:8px;
+color:rgba(255,255,255,0.45);
+font-style:italic;
+line-height:1.3;
+}
+
+.bubbles{display:flex;flex-direction:column;gap:7px;}
+
+.bubble{
+background:white;
+border-radius:12px 12px 12px 3px;
+padding:7px 10px;
+font-size:9.5px;
+color:#111;
+line-height:1.45;
+max-width:95%;
+position:relative;
+animation:bubblePop 0.3s ease both;
+}
+.bubble:nth-child(1){animation-delay:0.1s;}
+.bubble:nth-child(2){animation-delay:0.35s;}
+
+@keyframes bubblePop{
+from{opacity:0;transform:translateY(6px) scale(0.96);}
+to{opacity:1;transform:none;}
+}
+
+.bubble-time{
+font-size:8px;
+color:rgba(255,255,255,0.5);
+margin-top:3px;
+text-align:left;
+}
+
+.bubble strong{color:#0d4a8a;font-weight:600;}
+
+/* RIGHT: notifications + apps */
+.home-right{
+flex:1.3;
+padding:12px 12px 10px;
+display:flex;
+flex-direction:column;
+gap:8px;
+justify-content:space-between;
+background:#1a72c4;
+min-width:0;
+overflow:hidden;
+}
+
+/* section label */
+.section-label{
+font-family:‘Space Mono’,monospace;
+font-size:7px;
+letter-spacing:0.18em;
+color:rgba(255,255,255,0.6);
+text-transform:uppercase;
+margin-bottom:1px;
+flex-shrink:0;
+}
+
+/* cube-flip notification */
+.notif-scene{
+perspective:400px;
+height:72px;
+flex-shrink:0;
+}
+.notif-cube{
+width:100%;height:100%;
+position:relative;
+transform-style:preserve-3d;
+transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.notif-face{
+position:absolute;inset:0;
+background:#ffffff;
+border-radius:9px;
+padding:8px 10px;
+display:flex;gap:8px;align-items:flex-start;
+backface-visibility:hidden;
+}
+.notif-face.back{
+transform:rotateX(180deg);
+}
+.notif-cube.flipped{
+transform:rotateX(-180deg);
+}
+.notif-icon{
+width:28px;height:28px;
+border-radius:6px;
+flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+font-size:14px;
+background:#e8f0fe;
+overflow:hidden;
+}
+.notif-icon img{width:100%;height:100%;object-fit:contain;}
+.notif-body{flex:1;min-width:0;}
+.notif-title{
+font-size:9px;font-weight:600;color:#111111;
+margin-bottom:2px;
+white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.notif-sub{font-size:7.5px;color:#444444;line-height:1.35;
+display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.notif-time{font-size:7px;color:#888888;margin-top:2px;}
+
+/* app icons row — proportional, fill full right-panel width */
+.apps-row{
+display:flex;
+gap:6px;
+align-items:stretch;
+width:100%;
+flex-shrink:0;
+}
+.app-icon{
+flex:1;
+aspect-ratio:1/1;
+border-radius:10px;
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+transition:transform 0.15s, box-shadow 0.15s;
+border:1.5px solid rgba(255,255,255,0.2);
+overflow:hidden;
+background:#111111;
+min-width:0;
+min-height:0;
+}
+.app-icon:hover{transform:scale(1.06);box-shadow:0 4px 20px rgba(0,0,0,0.5);}
+.app-icon:active{transform:scale(0.93);}
+.app-icon svg{width:55%;height:55%;}
+
+/* bottom keyboard strip (home — decorative) */
+.home-kbd{
+background:#111318;
+padding:10px 12px 12px;
+display:flex;gap:10px;align-items:flex-start;
+}
+.kbd-area{flex:1;}
+.kbd-row{display:flex;gap:3px;justify-content:center;margin-bottom:4px;}
+.kbd-key{
+background:#2a2a30;color:#888;border-radius:3px;
+width:22px;height:20px;font-size:7.5px;
+display:flex;align-items:center;justify-content:center;
+font-family:‘DM Sans’,sans-serif;
+}
+.kbd-key.wide{width:56px;}
+.kbd-key.gray{background:#222;}
+.kbd-track{width:76px;height:60px;background:#1a1a1f;border-radius:6px;border:1px solid #2a2a30;}
+.kbd-btns{display:flex;flex-direction:column;gap:7px;align-items:center;justify-content:center;}
+.kbd-btn{
+width:30px;height:30px;background:#1a1a1f;border-radius:50%;
+border:1.5px solid #333;display:flex;align-items:center;justify-content:center;
+}
+.kbd-btn svg{width:11px;height:11px;stroke:#555;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ═══════════════════════════
+INTERACTIVE UX SCREEN
+═══════════════════════════ */
+#ux-screen .ux-top{
+display:flex;min-height:235px;background:#1a72c4;
+}
+.ux-left{
+flex:1.05;padding:12px 10px;border-right:1px solid rgba(255,255,255,0.15);
+display:flex;flex-direction:column;gap:6px;overflow:hidden;
+}
+.ux-logo{
+font-family:‘Space Mono’,monospace;font-size:14px;font-weight:700;
+color:white;line-height:1.2;letter-spacing:0.04em;
+}
+.tweet-stage{flex:1;position:relative;overflow:hidden;border-radius:8px;min-height:110px;}
+.tc{
+position:absolute;inset:0;background:white;border-radius:8px;
+padding:8px 10px;display:flex;flex-direction:column;gap:3px;
+opacity:0;transform:translateY(14px);
+transition:opacity 0.5s ease,transform 0.5s ease;pointer-events:none;
+}
+.tc.vis{opacity:1;transform:translateY(0);}
+.tc.out{opacity:0;transform:translateY(-10px);}
+.th{font-size:9.5px;font-weight:600;color:#1a72c4;display:flex;align-items:center;gap:4px;}
+.th span{color:#777;font-weight:400;}
+.tb{font-size:10px;color:#222;line-height:1.4;flex:1;}
+.ti{width:100%;height:52px;object-fit:cover;border-radius:5px;margin-top:2px;}
+.tf{
+font-size:9px;color:#1a72c4;font-weight:500;cursor:pointer;
+background:#e8f0fe;border-radius:4px;padding:2px 7px;
+display:inline-block;margin-top:auto;align-self:flex-start;
+}
+.dots-row{display:flex;gap:4px;justify-content:center;}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);transition:background 0.3s;}
+.dot.on{background:white;}
+
+.ux-right{
+flex:1;padding:10px 10px 8px 12px;display:flex;flex-direction:column;overflow:hidden;
+}
+.ux-sbar{
+font-size:9px;color:rgba(255,255,255,0.75);text-align:right;
+font-family:‘DM Sans’,sans-serif;margin-bottom:6px;flex-shrink:0;
+}
+.cw{
+flex:1;display:flex;flex-direction:column;justify-content:flex-end;
+gap:5px;overflow:hidden;min-height:0;
+}
+.msg{
+border-radius:10px;padding:6px 9px;font-size:10px;line-height:1.35;
+max-width:95%;transition:opacity 0.4s ease,transform 0.4s ease;
+opacity:0;transform:translateY(8px);
+}
+.msg.show{opacity:1;transform:translateY(0);}
+.msg.fade{opacity:0;transform:translateY(-6px);}
+.mu{background:rgba(255,255,255,0.95);color:#111;align-self:flex-start;}
+.ma{background:rgba(255,255,255,0.22);color:white;align-self:flex-end;}
+.mr{background:white;color:#111;align-self:flex-end;padding:6px 8px;}
+.rn{font-weight:600;font-size:10px;color:#1a72c4;margin-bottom:1px;}
+.rs{font-size:9px;color:#555;line-height:1.3;}
+.rl{font-size:8.5px;color:#1a72c4;text-decoration:underline;display:block;margin-top:2px;cursor:pointer;}
+.ux-sh{font-size:9px;color:rgba(255,255,255,0.45);text-align:center;padding:4px 0 0;font-style:italic;flex-shrink:0;}
+
+/* shake overlay */
+.ov{
+position:absolute;top:0;left:0;right:0;bottom:62px;
+background:rgba(14,55,115,0.95);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+z-index:20;opacity:0;pointer-events:none;transition:opacity 0.3s;
+border-radius:16px 16px 0 0;
+}
+.ov.on{opacity:1;pointer-events:all;}
+.ring{
+width:62px;height:62px;border:3px solid rgba(255,255,255,0.5);
+border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.ring.pop{animation:pop 0.25s ease;}
+@keyframes pop{0%{transform:scale(1);}50%{transform:scale(1.2);}100%{transform:scale(1);}}
+.sct{font-size:22px;color:white;font-family:‘DM Sans’,sans-serif;font-weight:700;}
+.scs{font-size:10px;color:rgba(255,255,255,0.65);margin-top:6px;text-align:center;line-height:1.5;max-width:180px;}
+.mpills{display:flex;gap:6px;margin-top:10px;}
+.mp{
+font-size:9px;border-radius:12px;padding:3px 10px;font-weight:600;
+border:1.5px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.4);
+font-family:‘Space Mono’,monospace;transition:all 0.25s;
+}
+.mp.on{border-color:white;color:white;background:rgba(255,255,255,0.18);}
+.askbtn{
+margin-top:14px;background:white;color:#1a72c4;border:none;
+border-radius:20px;padding:7px 24px;font-size:12px;font-weight:600;
+cursor:pointer;font-family:‘DM Sans’,sans-serif;opacity:0.3;
+pointer-events:none;transition:opacity 0.25s;
+}
+.askbtn.ready{opacity:1;pointer-events:all;}
+.cue{font-size:9px;color:rgba(255,255,255,0.4);margin-top:8px;font-style:italic;}
+
+/* UX keyboard */
+.ux-bot{
+background:#1a72c4;border-top:2px solid #0a0a0a;
+padding:10px 12px;display:flex;gap:10px;align-items:flex-start;
+}
+.kw{flex:1;}
+.ib{
+background:rgba(255,255,255,0.15);border-radius:6px;padding:5px 8px;
+font-size:11px;color:white;min-height:24px;margin-bottom:5px;
+display:flex;align-items:center;word-break:break-all;
+}
+.cur{
+display:inline-block;width:1.5px;height:13px;background:white;
+animation:blink 1s infinite;vertical-align:middle;margin-left:1px;
+}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.kr{display:flex;gap:4px;margin-bottom:4px;justify-content:center;}
+.k{
+background:white;color:#111;border-radius:4px;width:26px;height:26px;
+font-size:11px;font-family:‘DM Sans’,sans-serif;font-weight:500;
+border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+transition:background 0.1s,transform 0.08s;flex-shrink:0;user-select:none;
+}
+.k:active{transform:scale(0.9);}
+.k.wide{width:auto;padding:0 8px;flex:1;min-width:90px;}
+.k.gray{background:#b0b0b0;}
+.sc-col{display:flex;flex-direction:column;gap:8px;align-items:center;}
+.tp{width:72px;height:52px;background:#777;border-radius:6px;border:1px solid rgba(255,255,255,0.2);}
+.sbtn{
+width:38px;height:38px;background:#2a2a2a;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;border:2px solid #444;
+transition:background 0.15s,transform 0.1s;position:relative;z-index:30;
+}
+.sbtn:hover{background:#3a3a3a;}
+.sbtn:active{transform:scale(0.92);}
+.sbtn svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* back button (appears in ux) */
+.back-btn{
+position:absolute;top:8px;left:10px;z-index:50;
+background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.2);
+color:rgba(255,255,255,0.7);border-radius:20px;
+padding:3px 10px;font-size:8px;font-family:‘Space Mono’,monospace;
+cursor:pointer;letter-spacing:0.08em;
+transition:background 0.2s;
+}
+.back-btn:hover{background:rgba(0,0,0,0.6);}
+
+/* ═══════════════════════════
+SPOTIFY SCREEN
+═══════════════════════════ */
+#spotify-screen .sp-main{
+background:#111;
+min-height:280px;
+display:flex;
+gap:0;
+}
+.sp-left{
+flex:1;
+padding:16px 14px;
+display:flex;
+flex-direction:column;
+align-items:center;
+border-right:1px solid #1a1a1a;
+}
+.sp-big-art{
+width:110px;height:110px;
+border-radius:10px;
+background:linear-gradient(135deg,#1DB954 0%,#191414 100%);
+display:flex;align-items:center;justify-content:center;
+font-size:44px;
+margin-bottom:12px;
+box-shadow:0 8px 24px rgba(0,0,0,0.5);
+overflow:hidden;
+}
+.sp-big-art img{width:100%;height:100%;object-fit:cover;}
+.sp-song-name{font-size:13px;font-weight:700;color:white;text-align:center;margin-bottom:2px;}
+.sp-artist-name{font-size:10px;color:#aaa;text-align:center;margin-bottom:14px;}
+.sp-prog-wrap{width:100%;}
+.sp-bar{height:3px;background:#333;border-radius:3px;margin-bottom:4px;}
+.sp-bar-fill{height:100%;width:38%;background:#1DB954;border-radius:3px;}
+.sp-times{display:flex;justify-content:space-between;font-size:8px;color:#666;margin-bottom:12px;}
+.sp-ctrl{display:flex;align-items:center;justify-content:center;gap:12px;}
+.sp-c-btn{
+width:26px;height:26px;background:none;border:none;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+}
+.sp-c-btn svg{width:14px;height:14px;fill:#aaa;}
+.sp-c-play{
+width:38px;height:38px;background:#1DB954;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+}
+.sp-c-play svg{width:16px;height:16px;fill:white;margin-left:2px;}
+
+.sp-right{
+flex:1;
+padding:12px 10px;
+overflow-y:auto;
+}
+.sp-queue-label{
+font-family:‘Space Mono’,monospace;font-size:7.5px;
+letter-spacing:0.18em;color:#555;margin-bottom:10px;
+}
+.sp-track{
+display:flex;align-items:center;gap:8px;
+padding:5px 6px;border-radius:6px;cursor:pointer;
+transition:background 0.15s;
+margin-bottom:3px;
+}
+.sp-track:hover{background:#1a1a1a;}
+.sp-track.playing{background:#1a2a1a;}
+.sp-t-num{font-size:8.5px;color:#555;width:12px;text-align:center;flex-shrink:0;}
+.sp-t-art{
+width:28px;height:28px;border-radius:4px;flex-shrink:0;
+background:#222;display:flex;align-items:center;justify-content:center;font-size:13px;
+overflow:hidden;
+}
+.sp-t-art img{width:100%;height:100%;object-fit:cover;}
+.sp-t-info{flex:1;min-width:0;}
+.sp-t-name{font-size:9px;color:#ddd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.sp-t-artist{font-size:8px;color:#666;}
+.sp-t-dur{font-size:8px;color:#555;flex-shrink:0;}
+.sp-track.playing .sp-t-name{color:#1DB954;}
+.sp-track.playing .sp-t-num{color:#1DB954;}
+
+.sp-kbd{
+background:#0d0d0d;border-top:1px solid #1a1a1a;
+padding:8px 12px 10px;
+display:flex;gap:10px;align-items:flex-start;
+}
+
+/* ═══════════════════════════
+APP REDIRECT SCREEN
+═══════════════════════════ */
+#app-screen .app-main{
+background:#1a72c4;
+min-height:280px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:16px;
+padding:30px;
+}
+.app-big-icon{
+width:64px;height:64px;border-radius:16px;
+display:flex;align-items:center;justify-content:center;
+background:#fff;
+font-size:32px;
+box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+.app-name{font-family:‘Space Mono’,monospace;font-size:18px;font-weight:700;color:white;letter-spacing:0.05em;}
+.app-msg{font-size:11px;color:rgba(255,255,255,0.6);text-align:center;line-height:1.6;max-width:240px;}
+.app-return{
+background:white;color:#1a72c4;border:none;border-radius:20px;
+padding:9px 24px;font-size:11px;font-weight:600;
+cursor:pointer;font-family:‘DM Sans’,sans-serif;
+margin-top:6px;transition:opacity 0.2s;
+}
+.app-return:hover{opacity:0.85;}
+</style>
+
+</head>
+<body>
+
+<div class="device" id="device">
+
+  <!-- STATUS BAR -->
+
+  <div class="statusbar">
+    <span class="status-brand">ALLUDE</span>
+    <span id="status-time">12:00 PM</span>
+    <span>ᯤ ●●●</span>
+  </div>
+
+  <!-- ══════════════ HOME SCREEN ══════════════ -->
+
+  <div id="home-screen" class="screen active">
+    <div class="main">
+
+```
+  <!-- LEFT: bubbles on top, bird placeholder bottom-left -->
+  <div class="home-left">
+
+    <div class="bubbles">
+      <div class="bubble">
+        Hello! Today is <strong id="home-date">—</strong> and it's currently <strong id="home-weather">loading weather...</strong>
+      </div>
+      <div class="bubble" id="calendar-bubble">
+        On the calendar today we have <strong>no events scheduled</strong> — a free day 🌿
+      </div>
+    </div>
+
+    <div class="bubble-time" id="bubble-ts">—</div>
+
+    <div class="bird-wrap">
+      <div class="bird-placeholder" id="bird" title="Tap to ask Allude">
+        <img id="bird-img" src="" alt="bird">
+        <div class="bird-placeholder-label">your<br>bird</div>
+      </div>
+      <div class="bird-hint">tap me to<br>ask allude →</div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: feed + notifs + apps (Spotify as icon) -->
+  <div class="home-right">
+
+    <!-- FOR YOU section label -->
+    <div class="section-label">FOR YOU</div>
+
+    <!-- Cube-flip notification -->
+    <div class="notif-scene">
+      <div class="notif-cube" id="notif-cube">
+        <!-- Face A -->
+        <div class="notif-face" id="notif-face-a">
+          <div class="notif-icon" id="notif-icon-a">📰</div>
+          <div class="notif-body">
+            <div class="notif-title" id="notif-title-a">The New York Times</div>
+            <div class="notif-sub" id="notif-sub-a">Here's a guide to how you can keep up with The New York Times, on and off Twitter.</div>
+            <div class="notif-time" id="notif-time-a">PINNED · 2 min ago</div>
+          </div>
+        </div>
+        <!-- Face B -->
+        <div class="notif-face back" id="notif-face-b">
+          <div class="notif-icon" id="notif-icon-b">🐦</div>
+          <div class="notif-body">
+            <div class="notif-title" id="notif-title-b">X · Trending</div>
+            <div class="notif-sub" id="notif-sub-b">"Allude" — 38K posts · AI device that shakes for answers is going viral.</div>
+            <div class="notif-time" id="notif-time-b">TRENDING · now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- App icons row: Spotify + X + TikTok + Google -->
+    <div class="section-label">APPS</div>
+    <div class="apps-row">
+
+      <!-- Spotify -->
+      <div class="app-icon" id="spotify-btn" title="Spotify" style="background:#191414;">
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <circle cx="12" cy="12" r="12" fill="#1DB954"/>
+          <path fill="white" d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z"/>
+        </svg>
+      </div>
+
+      <!-- X -->
+      <div class="app-icon" id="app-x" title="X" style="background:#000;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </div>
+
+      <!-- TikTok -->
+      <div class="app-icon" id="app-tiktok" title="TikTok" style="background:#010101;">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path fill="#69C9D0" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/>
+          <path fill="#EE1D52" d="M15.82 2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V6.69a4.83 4.83 0 0 0 3.77-4.69h-3.77z"/>
+        </svg>
+      </div>
+
+      <!-- Google -->
+      <div class="app-icon" id="app-google" title="Google" style="background:white;">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Keyboard — same style as Allude UX -->
+<div class="ux-bot" style="border-top:2px solid #0a0a0a;">
+  <div class="kw">
+    <div class="ib" style="opacity:0.5;pointer-events:none;"><span class="cur"></span></div>
+    <div id="home-kb"></div>
+  </div>
+  <div class="sc-col">
+    <div class="tp"></div>
+    <div class="sbtn" style="opacity:0.4;cursor:default;">
+      <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+    </div>
+    <div class="sbtn" style="opacity:0.4;cursor:default;">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ══════════════ INTERACTIVE UX SCREEN ══════════════ -->
+
+  <div id="ux-screen" class="screen" style="position:relative;">
+    <button class="back-btn" id="ux-back">← HOME</button>
+
+```
+<div class="ov" id="ov">
+  <div class="ring" id="ring">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+  </div>
+  <div class="sct" id="sct">× 0</div>
+  <div class="scs" id="scs">click shake button below to count</div>
+  <div class="mpills">
+    <div class="mp" id="p2">× 2 = X insights</div>
+    <div class="mp" id="p3">× 3 = Google facts</div>
+  </div>
+  <button class="askbtn" id="askbtn">Ask Allude</button>
+  <div class="cue" id="cue">keep clicking shake ↓</div>
+</div>
+
+<div class="ux-top">
+  <div class="ux-left">
+    <div class="ux-logo">ASK<br>ALLUDE</div>
+    <div class="tweet-stage" id="ts"></div>
+  </div>
+  <div class="ux-right">
+    <div class="ux-sbar" id="sbar"></div>
+    <div class="cw" id="cw"></div>
+    <div class="ux-sh">shake or type to ask allude ↑</div>
+  </div>
+</div>
+
+<div class="ux-bot">
+  <div class="kw">
+    <div class="ib"><span id="kbt"></span><span class="cur"></span></div>
+    <div id="kb"></div>
+  </div>
+  <div class="sc-col">
+    <div class="tp"></div>
+    <button class="sbtn" id="shakeBtn">
+      <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+    </button>
+    <button class="sbtn" id="sendBtn">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ══════════════ SPOTIFY SCREEN ══════════════ -->
+
+  <div id="spotify-screen" class="screen">
+    <button class="back-btn" id="sp-back">← HOME</button>
+    <div class="sp-main">
+
+```
+  <!-- LEFT: now playing -->
+  <div class="sp-left">
+    <div class="sp-big-art">
+      <img src="https://i.scdn.co/image/ab67616d0000b273a59c6e2c3c1d6b5f0cb82d00"
+           onerror="this.parentElement.textContent='🎵'" alt="Donna Summer">
+    </div>
+    <div class="sp-song-name">State of Independence</div>
+    <div class="sp-artist-name">Donna Summer</div>
+    <div class="sp-prog-wrap">
+      <div class="sp-bar"><div class="sp-bar-fill" id="sp-fill"></div></div>
+      <div class="sp-times">
+        <span id="sp-cur">1:27</span>
+        <span>3:56</span>
+      </div>
+    </div>
+    <div class="sp-ctrl">
+      <button class="sp-c-btn">
+        <svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16z"/><line x1="5" y1="19" x2="5" y2="5" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="sp-c-btn sp-c-play" id="sp-play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
+      <button class="sp-c-btn">
+        <svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4z"/><line x1="19" y1="5" x2="19" y2="19" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- RIGHT: queue -->
+  <div class="sp-right">
+    <div class="sp-queue-label">DONNA SUMMER · QUEUE</div>
+
+    <div class="sp-track playing">
+      <div class="sp-t-num">▶</div>
+      <div class="sp-t-art">🎵</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">State of Independence</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">3:56</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">2</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">Hot Stuff</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">4:58</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">3</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">Bad Girls</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">4:58</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">4</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">Last Dance</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">3:43</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">5</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">I Feel Love</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">5:51</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">6</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">On the Radio</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">5:21</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">7</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">MacArthur Park</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">8:43</div>
+    </div>
+
+    <div class="sp-track">
+      <div class="sp-t-num">8</div>
+      <div class="sp-t-art">🎶</div>
+      <div class="sp-t-info">
+        <div class="sp-t-name">She Works Hard for the Money</div>
+        <div class="sp-t-artist">Donna Summer</div>
+      </div>
+      <div class="sp-t-dur">4:29</div>
+    </div>
+  </div>
+</div>
+
+<!-- Keyboard strip -->
+<div class="sp-kbd">
+  <div class="kbd-area">
+    <div class="kbd-row">
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">q</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">w</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">e</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">r</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">t</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">y</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">u</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">i</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">o</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">p</div>
+    </div>
+    <div class="kbd-row">
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">a</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">s</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">d</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">f</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">g</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">h</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">j</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">k</div>
+      <div class="kbd-key" style="background:#1a1a1a;color:#555;">l</div>
+    </div>
+  </div>
+  <div class="kbd-track" style="background:#0d0d0d;border-color:#1a1a1a;"></div>
+  <div class="kbd-btns">
+    <div class="kbd-btn"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+    <div class="kbd-btn"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="#333" stroke="none"/></svg></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ══════════════ APP REDIRECT SCREEN ══════════════ -->
+
+  <div id="app-screen" class="screen">
+    <button class="back-btn" id="app-back">← HOME</button>
+    <div class="app-main">
+      <div class="app-big-icon" id="app-icon-big">𝕏</div>
+      <div class="app-name" id="app-screen-name">X</div>
+      <div class="app-msg">This app is opening on your Allude device.<br>Return home to continue.</div>
+      <button class="app-return" id="app-return-btn">← Return to Allude</button>
+    </div>
+    <div class="home-kbd" style="background:#0d4a8a;border-top:1px solid rgba(255,255,255,0.1);">
+      <div class="kbd-area">
+        <div class="kbd-row">
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">q</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">w</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">e</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">r</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">t</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">y</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">u</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">i</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">o</div>
+          <div class="kbd-key" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">p</div>
+        </div>
+        <div class="kbd-row">
+          <div class="kbd-key wide" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);">space</div>
+        </div>
+      </div>
+      <div class="kbd-track" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);"></div>
+      <div class="kbd-btns">
+        <div class="kbd-btn" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" stroke="rgba(255,255,255,0.4)"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /device -->
+
+<script>
+// ─── UTILS ───
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ─── STATUS BAR TIME ───
+function updateTime(){
+  const n=new Date();let h=n.getHours(),m=n.getMinutes();
+  const ap=h>=12?'PM':'AM';h=h%12||12;
+  const t=h+':'+(m<10?'0'+m:m)+' '+ap;
+  document.getElementById('status-time').textContent=t;
+  const sbar=document.getElementById('sbar');
+  if(sbar)sbar.textContent=t+'  ᯤ';
+}
+updateTime();setInterval(updateTime,30000);
+
+// ─── HOME: live date + weather ───
+(function(){
+  const now=new Date();
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const dateStr=days[now.getDay()]+', '+months[now.getMonth()]+' '+now.getDate();
+  document.getElementById('home-date').textContent=dateStr;
+  const h=now.getHours(),mi=now.getMinutes();
+  const ap=h>=12?'PM':'AM';const hh=h%12||12;
+  document.getElementById('bubble-ts').textContent='Today · '+hh+':'+(mi<10?'0'+mi:mi)+' '+ap;
+
+  // use open-meteo's built-in IP geolocation — no extra API key needed
+  fetch('https://ipapi.co/json/')
+    .then(r=>r.json())
+    .then(geo=>{
+      const lat=geo.latitude,lon=geo.longitude,city=geo.city||'your city';
+      return fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current_weather=true&temperature_unit=fahrenheit')
+        .then(r=>r.json())
+        .then(wx=>{
+          const temp=Math.round(wx.current_weather.temperature);
+          const code=wx.current_weather.weathercode;
+          const conds={0:'clear ☀️',1:'mostly clear ☀️',2:'partly cloudy ⛅',3:'overcast ☁️',45:'foggy 🌫️',51:'drizzly 🌦️',53:'drizzly 🌦️',61:'rainy 🌧️',63:'rainy 🌧️',71:'snowy 🌨️',80:'showery 🌦️',95:'stormy ⛈️'};
+          const desc=conds[code]||'mild';
+          document.getElementById('home-weather').textContent=temp+'°F and '+desc+' in '+city;
+        });
+    })
+    .catch(()=>{
+      // fallback: just show time-based greeting
+      const hr=new Date().getHours();
+      const feel=hr<12?'a crisp morning':'a warm afternoon';
+      document.getElementById('home-weather').textContent=feel+' — check outside!';
+    });
+})();
+
+// ─── HOME KEYBOARD (same keys as UX, non-interactive display) ───
+(function(){
+  const rows=[
+    ['q','w','e','r','t','y','u','i','o','p'],
+    ['a','s','d','f','g','h','j','k','l'],
+    ['⇧','z','x','c','v','b','n','m','⌫'],
+    ['123','space','↵']
+  ];
+  const kb=document.getElementById('home-kb');
+  if(!kb)return;
+  rows.forEach(keys=>{
+    const row=document.createElement('div');row.className='kr';
+    keys.forEach(k=>{
+      const btn=document.createElement('button');btn.className='k';btn.textContent=k;
+      if(k==='space')btn.classList.add('wide');
+      if(['⇧','⌫','123','↵'].includes(k))btn.classList.add('gray');
+      btn.style.pointerEvents='none';btn.style.opacity='0.7';
+      row.appendChild(btn);
+    });
+    kb.appendChild(row);
+  });
+})();
+
+// ─── CUBE NOTIFICATION ROTATOR ───
+(function(){
+  const notifications=[
+    {icon:'📰',title:'The New York Times',sub:'Here\'s a guide to how you can keep up with the NYT, on and off Twitter.',time:'PINNED · 2 min ago'},
+    {icon:'🐦',title:'X · Trending',sub:'"Allude" — 38K posts · AI device that shakes for answers is going viral.',time:'TRENDING · now'},
+    {icon:'🎵',title:'Donna Summer',sub:'State of Independence is now playing on Spotify.',time:'NOW PLAYING'},
+    {icon:'📅',title:'Google Calendar',sub:'No events scheduled today — a free day to explore.',time:'TODAY'},
+  ];
+  let idx=0,flipped=false;
+  const cube=document.getElementById('notif-cube');
+  const faceA=document.getElementById('notif-face-a');
+  const faceB=document.getElementById('notif-face-b');
+
+  function setFace(face,n){
+    face.querySelector('.notif-icon').textContent=n.icon;
+    face.querySelector('.notif-title').textContent=n.title;
+    face.querySelector('.notif-sub').textContent=n.sub;
+    face.querySelector('.notif-time').textContent=n.time;
+  }
+
+  setInterval(()=>{
+    idx=(idx+1)%notifications.length;
+    const n=notifications[idx];
+    if(!flipped){
+      setFace(faceB,n);
+      cube.classList.add('flipped');
+    }else{
+      setFace(faceA,n);
+      cube.classList.remove('flipped');
+    }
+    flipped=!flipped;
+  },3500);
+})();
+
+// ─── BIRD → UX ───
+document.getElementById('bird').addEventListener('click',()=>{
+  showScreen('ux-screen');
+  initUX();
+});
+document.getElementById('ux-back').addEventListener('click',()=>showScreen('home-screen'));
+
+// ─── APP REDIRECTS ───
+const appData={
+  'spotify-btn':{name:'Spotify',icon:'🎵',bg:'#191414',isSpotify:true},
+  'app-x':{name:'X',icon:'<svg viewBox="0 0 24 24" fill="#111" width="32" height="32"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',bg:'#000'},
+  'app-tiktok':{name:'TikTok',icon:'🎵',bg:'#010101'},
+  'app-google':{name:'Google',icon:'🔍',bg:'#fff'},
+};
+
+Object.keys(appData).forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.addEventListener('click',()=>{
+    const d=appData[id];
+    if(d.isSpotify){showScreen('spotify-screen');return;}
+    document.getElementById('app-screen-name').textContent=d.name;
+    const iconEl=document.getElementById('app-icon-big');
+    iconEl.innerHTML=d.icon;
+    iconEl.style.background=d.bg;
+    showScreen('app-screen');
+  });
+});
+document.getElementById('app-back').addEventListener('click',()=>showScreen('home-screen'));
+document.getElementById('app-return-btn').addEventListener('click',()=>showScreen('home-screen'));
+document.getElementById('sp-back').addEventListener('click',()=>showScreen('home-screen'));
+
+// Spotify progress ticker
+let spProgress=38,spPlaying=true;
+setInterval(()=>{
+  if(!spPlaying)return;
+  spProgress=Math.min(spProgress+0.08,100);
+  const fill=document.getElementById('sp-fill');
+  if(fill)fill.style.width=spProgress+'%';
+  const total=236,cur=Math.round(total*(spProgress/100));
+  const m=Math.floor(cur/60),s=cur%60;
+  const el=document.getElementById('sp-cur');
+  if(el)el.textContent=m+':'+(s<10?'0'+s:s);
+},1000);
+document.getElementById('sp-play-btn').addEventListener('click',()=>{
+  spPlaying=!spPlaying;
+  const btn=document.getElementById('sp-play-btn');
+  btn.innerHTML=spPlaying
+    ?'<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg>'
+    :'<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>';
+});
+document.querySelectorAll('.sp-track').forEach(t=>{
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.sp-track').forEach(x=>{x.classList.remove('playing');const n=x.querySelector('.sp-t-num');if(n&&n.textContent==='▶')n.textContent='';});
+    this.classList.add('playing');
+    const numEl=this.querySelector('.sp-t-num');if(numEl)numEl.textContent='▶';
+  });
+});
+
+// ─── UX SCREEN ───
+let uxInitialized=false;
+
+function initUX(){
+  if(uxInitialized)return;
+  uxInitialized=true;
+
+  const tweets=[
+    {h:'@beyoncegarden',s:'· 2m',b:'even APPLE MUSIC knows beyoncé\'s best work is lemonade, ICONIC 😭😭😭',img:'https://i.redd.it/yhzrkxdnxy1d1.jpeg'},
+    {h:'@cnn',s:'· 1d',b:'French authorities have arrested two more suspects over a foiled attack on Bank of America\'s Paris offices.',img:'https://pbs.twimg.com/media/HElPlS1XMAAWGv2?format=jpg&name=small'},
+    {h:'@forbes',s:'· 2d',b:'Seven years from now, the Social Security system will go bust. There isn\'t enough coming in from people still working to cover benefits.',img:'https://pbs.twimg.com/media/HEihIErbIAAtPfS?format=jpg&name=small'},
+    {h:'@techfeed_x',s:'· 18m',b:'Google x X collab for a device that speaks Gen Z? About time #AI',img:'https://res.cloudinary.com/djmffrvpg/image/upload/v1774789712/Allude-DE-Profile_pwmmol.png'},
+    {h:'@ambientshift',s:'· 24m',b:'The future of AI is ambient, not screen-based. Shake to ask is the natural next step 🤝',img:null},
+  ];
+  const xR=['X trending: "Allude" — 38K posts in 6 hours 🔥','Social pulse: 94% of X users want ambient AI over screen-based','Top X sentiment: people want AI that feels human, not robotic 💬','Breaking on X: Google & X device pre-orders up 220% this week'];
+  const gR=[
+    {n:'Ambient Computing',s:'A paradigm where computing is embedded in everyday objects, removing the need for screens.'},
+    {n:'Voice-First AI',s:'AI systems designed for hands-free interaction — pioneered by Google Assistant, now evolving fast.'},
+    {n:'Gen Z Tech Behavior',s:'72% of Gen Z prefer AI that integrates with social platforms as their primary info source. (Pew 2024)'},
+    {n:'Magic 8 Ball (design heritage)',s:'Invented in 1950. The shake-to-answer interaction model has remained culturally intuitive for 70+ years.'},
+  ];
+  const tR=[
+    {q:'beyonc',a:{t:'rich',n:'Beyoncé',s:'Singer-songwriter & entrepreneur. Renaissance World Tour grossed $580M globally.'}},
+    {q:'what does allude',a:{t:'plain',v:'Allude bridges AI + social media. Shake ×2 for real-time X insights, ×3 for Google facts.'}},
+    {q:'how does it work',a:{t:'plain',v:'Shake twice for X social insights. Shake three times for Google responses. Or type directly.'}},
+    {q:'magic 8',a:{t:'rich',n:'Nostalgia as interface design',s:'The Magic 8 Ball succeeded because everyone already knows how to use it. Allude applies that same learned behavior to AI.'}},
+    {q:'who is this for',a:{t:'rich',n:'Target: digital natives 18–38',s:'Gen Z and Millennials who treat social media as their primary info source.'}},
+    {q:'why google',a:{t:'rich',n:'Google × X',s:'Google brings AI infrastructure. X provides real-time social context. Together they answer "what\'s true" and "what are people saying."'}},
+    {q:'market',a:{t:'rich',n:'4.9 billion social media users',s:'No device bridges passive content consumption with intelligent assistance in a social-native format. Until now.'}},
+    {q:'price',a:{t:'plain',v:'Premium positioning at $199–249. Available through Google Store and as an X Blue bundle.'}},
+    {q:'who made',a:{t:'rich',n:'Omolola Ogunlade',s:'Brand strategist & speculative designer. See more at oogun.works'}},
+    {q:'oogun',a:{t:'rich',n:'Oogun.works',s:'A creative consultancy built on Afromodernism as methodology. Understand · Make · Measure.'}},
+    {q:'allude',a:{t:'plain',v:'Shake ×2 for X social insights, ×3 for Google knowledge base facts.'}},
+    {q:'help',a:{t:'plain',v:'Try: "how does it work", "who made this", "what is the market" — or just shake.'}},
+  ];
+
+  async function fetchWeather(){
+    try{
+      const g=await(await fetch('https://ipapi.co/json/')).json();
+      const wx=await(await fetch('https://api.open-meteo.com/v1/forecast?latitude='+g.latitude+'&longitude='+g.longitude+'&current_weather=true&temperature_unit=fahrenheit')).json();
+      const temp=Math.round(wx.current_weather.temperature);
+      const c={0:'Clear ☀️',1:'Mostly clear ☀️',2:'Partly cloudy ⛅',3:'Overcast ☁️',51:'Drizzle 🌦️',61:'Rain 🌧️',71:'Snow 🌨️',95:'Thunderstorms ⛈️'};
+      return (c[wx.current_weather.weathercode]||'Mild')+' in '+g.city+' — '+temp+'°F.';
+    }catch(e){return 'Unable to fetch weather right now.';}
+  }
+
+  function getTR(q){
+    const lq=q.toLowerCase();
+    if(lq.includes('weather')||lq.includes('temp')||lq.includes('outside'))return{t:'async',fn:fetchWeather};
+    for(const r of tR){if(lq.includes(r.q))return r.a;}
+    return{t:'plain',v:'Searching X and Google for "'+q+'"... Found '+Math.floor(Math.random()*800+100)+' posts.'};
+  }
+
+  let tIdx=0,typed='',shakeCount=0,overlayOpen=false,numMode=false;
+  const tsEl=document.getElementById('ts');
+  const cwEl=document.getElementById('cw');
+  const kbtEl=document.getElementById('kbt');
+  const ovEl=document.getElementById('ov');
+  const ringEl=document.getElementById('ring');
+  const sctEl=document.getElementById('sct');
+  const scsEl=document.getElementById('scs');
+  const askBtn=document.getElementById('askbtn');
+  const p2El=document.getElementById('p2');
+  const p3El=document.getElementById('p3');
+  const shakeBtn=document.getElementById('shakeBtn');
+  const sendBtn=document.getElementById('sendBtn');
+
+  tweets.forEach((t,i)=>{
+    const d=document.createElement('div');
+    d.className='tc'+(i===0?' vis':'');
+    const img=t.img?'<img class="ti" src="'+t.img+'" onerror="this.style.display=\'none\'" alt="">':'';
+    d.innerHTML='<div class="th"><svg width="10" height="10" viewBox="0 0 24 24" fill="#1a72c4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'+t.h+' <span>'+t.s+'</span></div><div class="tb">'+t.b+'</div>'+img+'<div class="tf">View on X →</div>';
+    tsEl.appendChild(d);
+  });
+
+  function cycleTweet(){
+    const cards=[...tsEl.querySelectorAll('.tc')];
+    cards[tIdx].classList.add('out');
+    setTimeout(()=>{
+      cards[tIdx].classList.remove('vis','out');
+      tIdx=(tIdx+1)%tweets.length;
+      cards[tIdx].classList.add('vis');
+    },480);
+  }
+  setInterval(cycleTweet,3500);
+
+  const MAX_MSGS=3;
+  function pruneIfNeeded(){
+    const msgs=[...cwEl.querySelectorAll('.msg')];
+    if(msgs.length>=MAX_MSGS){msgs[0].classList.add('fade');setTimeout(()=>msgs[0].remove(),400);}
+  }
+  function addMsg(content,cls,delay){
+    return new Promise(res=>{
+      setTimeout(()=>{
+        pruneIfNeeded();
+        setTimeout(()=>{
+          const el=document.createElement('div');el.className='msg '+cls;
+          if(cls==='mr'){el.innerHTML='<div class="rn">'+content.n+'</div><div class="rs">'+content.s+'</div><span class="rl">Read more on Google →</span>';}
+          else{el.textContent=content;}
+          cwEl.appendChild(el);void el.offsetWidth;el.classList.add('show');res(el);
+        },120);
+      },delay||0);
+    });
+  }
+
+  setTimeout(()=>addMsg('Try asking me anything...','mu',0),400);
+
+  const kbA=[['q','w','e','r','t','y','u','i','o','p'],['a','s','d','f','g','h','j','k','l'],['⇧','z','x','c','v','b','n','m','⌫'],['123','space','↵']];
+  const kbN=[['1','2','3','4','5','6','7','8','9','0'],['-','/',':',';','(',')','$','&','@','"'],['#','+','=','_','!','?','.',',','⌫'],['ABC','space','↵']];
+  const kbEl=document.getElementById('kb');
+
+  function buildKeyboard(){
+    kbEl.innerHTML='';
+    const rows=numMode?kbN:kbA;
+    rows.forEach(keys=>{
+      const row=document.createElement('div');row.className='kr';
+      keys.forEach(k=>{
+        const btn=document.createElement('button');btn.className='k';btn.textContent=k;
+        if(k==='space')btn.classList.add('wide');
+        if(['⇧','⌫','123','ABC'].includes(k))btn.classList.add('gray');
+        if(k==='↵')btn.classList.add('gray');
+        btn.addEventListener('mousedown',e=>{
+          e.preventDefault();e.stopPropagation();
+          if(k==='⌫'){typed=typed.slice(0,-1);}
+          else if(k==='space'){typed+=' ';}
+          else if(k==='↵'){submitTyped();return;}
+          else if(k==='123'){numMode=true;buildKeyboard();return;}
+          else if(k==='ABC'){numMode=false;buildKeyboard();return;}
+          else if(k==='⇧')return;
+          else typed+=k;
+          kbtEl.textContent=typed;
+        });
+        row.appendChild(btn);
+      });
+      kbEl.appendChild(row);
+    });
+  }
+  buildKeyboard();
+
+  function submitTyped(){
+    if(!typed.trim())return;
+    const q=typed.trim();typed='';kbtEl.textContent='';
+    addMsg(q,'mu',0);
+    const resp=getTR(q);
+    if(resp.t==='async'){resp.fn().then(r=>addMsg(r,'ma',0));}
+    else setTimeout(()=>{if(resp.t==='rich')addMsg({n:resp.n,s:resp.s},'mr',0);else addMsg(resp.v,'ma',0);},950);
+  }
+
+  sendBtn.addEventListener('click',e=>{e.stopPropagation();submitTyped();});
+
+  function openOverlay(){
+    shakeCount=0;overlayOpen=true;ovEl.classList.add('on');
+    sctEl.textContent='× 0';scsEl.textContent='click the shake button below to count';
+    p2El.classList.remove('on');p3El.classList.remove('on');
+    askBtn.classList.remove('ready');document.getElementById('cue').style.opacity='0.4';
+  }
+  function doShake(){
+    if(shakeCount>=3)return;
+    shakeCount++;
+    ringEl.classList.remove('pop');void ringEl.offsetWidth;ringEl.classList.add('pop');
+    sctEl.textContent='× '+shakeCount;
+    const dev=document.getElementById('device');
+    dev.style.transition='transform 0.08s';
+    dev.style.transform=shakeCount%2===0?'rotate(-2deg)':'rotate(2deg)';
+    setTimeout(()=>{dev.style.transform='';},110);
+    if(shakeCount===1)scsEl.textContent='one more for X insights, keep going for Google...';
+    if(shakeCount===2){scsEl.textContent='×2 ready — X social insights unlocked';p2El.classList.add('on');askBtn.classList.add('ready');}
+    if(shakeCount===3){scsEl.textContent='×3 ready — Google knowledge base unlocked';p3El.classList.add('on');document.getElementById('cue').style.opacity='0';}
+  }
+
+  shakeBtn.addEventListener('click',e=>{
+    e.stopPropagation();
+    if(!overlayOpen)openOverlay();else doShake();
+  });
+  askBtn.addEventListener('click',e=>{
+    e.stopPropagation();overlayOpen=false;ovEl.classList.remove('on');
+    if(shakeCount>=3){
+      const r=gR[Math.floor(Math.random()*gR.length)];
+      addMsg('Google search...','mu',0);setTimeout(()=>addMsg({n:r.n,s:r.s},'mr',0),950);
+    }else{
+      const r=xR[Math.floor(Math.random()*xR.length)];
+      addMsg("What's trending on X?","mu",0);setTimeout(()=>addMsg(r,'ma',0),900);cycleTweet();
+    }
+    shakeCount=0;
+  });
+}
+</script>
+
+</body>
+</html>
