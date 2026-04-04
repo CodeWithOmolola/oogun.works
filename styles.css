@@ -2958,12 +2958,12 @@ button:focus-visible {
   --dock-bg:#1a72c4;--dock-btn:#0d4a8a;--dock-btn-border:rgba(255,255,255,0.3);--dock-input:rgba(255,255,255,0.15);
 }
 .allude-device{font-family:'DM Sans',sans-serif;background:#1a1a2e;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
-.device{width:580px;max-width:100%;height:380px;max-height:380px;min-height:380px;background:#0a0a0a;border-radius:18px;border:2px solid #2a2a2a;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(26,114,196,0.2);display:flex;flex-direction:column;}
+.device{width:580px;max-width:100%;height:390px;max-height:390px;min-height:390px;background:#0a0a0a;border-radius:18px;border:2px solid #2a2a2a;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.7),0 0 0 1px rgba(26,114,196,0.2);display:flex;flex-direction:column;}
 .statusbar{background:var(--blue);height:20px;min-height:20px;max-height:20px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:15px 12px 12px 15px;font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.85);letter-spacing:0.05em;}
 .status-brand{font-weight:700;color:white;}
 .screen{display:none;flex-direction:column;overflow:hidden;flex-shrink:0;}
 .screen.active{display:flex;}
-.viewer{height:215px;max-height:215px;min-height:215px;flex-shrink:0;overflow:hidden;position:relative;}
+.viewer{height:225px;max-height:225px;min-height:225px;flex-shrink:0;overflow:hidden;position:relative;}
 .kbd-dock{height:165px;max-height:165px;min-height:165px;flex-shrink:0;background:var(--dock-bg);border-top:2px solid rgba(0,0,0,0.25);padding:7px 11px 8px;display:flex;gap:9px;align-items:flex-start;overflow:hidden;}
 .kw{flex:1;min-width:0;}
 /* ── TYPING DISPLAY — now lives in ux-right panel ── */
