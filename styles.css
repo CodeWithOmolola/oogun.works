@@ -3037,7 +3037,7 @@ button:focus-visible {
 .th{font-size:8.5px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:3px;flex-shrink:0;}
 .th span{color:#777;font-weight:400;}
 .tb{font-size:9px;color:#222;line-height:1.38;flex:1;overflow:hidden;}
-.ti{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:3px;margin-bottom:5px;flex-shrink:0;display:block;}
+.ti{width:100%;height:110px;object-fit:cover;border-radius:8px;margin-top:3px;margin-bottom:5px;flex-shrink:0;display:block;}
 .tf{font-size:8px;color:var(--blue);font-weight:500;cursor:pointer;background:#e8f0fe;border-radius:3px;padding:2px 5px;display:inline-block;margin-top:auto;align-self:flex-start;flex-shrink:0;}
 .ux-right{flex:1;padding:7px 8px 6px 9px;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
 .ux-logo-right{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:rgba(255,255,255,0.9);line-height:1.2;letter-spacing:0.04em;flex-shrink:0;margin-bottom:4px;}
