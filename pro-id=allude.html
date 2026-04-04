@@ -139,224 +139,226 @@
     
     <!-- ALLUDE User Interaction - Start -->
     <h2 class="section-heading-center" style="margin-top: var(--space-md); margin-bottom: var(--space-xs); color: #0049d1;">USE ALLUDE - TEST THE UX</h2>
-    <div class="device" id="device">
-      <div class="statusbar">
-        <span class="status-brand">ALLUDE</span>
-        <span id="status-time">12:00 PM</span>
-        <span>ᯤ ●●●</span>
-      </div>
-    
-      <!-- HOME -->
-      <div id="home-screen" class="screen active">
-        <div class="viewer">
-          <div class="home-viewer">
-            <div class="home-left">
-              <div class="bubbles">
-                <div class="bubble">Hello! Today is <strong id="home-date">—</strong> and it's <strong id="home-weather">loading…</strong></div>
-                <div class="bubble">On the calendar: <strong>Mary's Birthday Dinner @ 7pm at Gage &amp; Tollner</strong> 🎂
-                  <div class="bubble-route" id="route-btn"><img class="bubble-route-img" src='https://www.gearbrain.com/media-library/10-great-google-maps-tips.png?id=24426139&width=337&quality=50'>Schedule route from Home 🠒 Gage &amp; Tollner</div>
-                </div>
-              </div>
-              <div>
-                <div class="bubble-time" id="bubble-ts">—</div>
-                <div class="bird-wrap">
-                  <div class="bird-placeholder" id="bird"><img src="https://media.tenor.com/Bbaf7jFc3ZEAAAAj/twitter-png.gif" style="width:75%;height:auto;object-fit:contain;border-radius:8px;"></div>
-                  <div class="bird-hint">🠔 tap me to<br>ask allude</div>
-                </div>
-              </div>
-            </div>
-            <div class="home-right">
-              <div class="section-label">FOR YOU</div>
-              <div class="notif-scene">
-                <div class="notif-cube" id="notif-cube">
-                  <div class="notif-face" id="notif-face-a">
-                    <div class="notif-icon" id="notif-icon-a">📰</div>
-                    <div class="notif-body"><div class="notif-title" id="notif-title-a">The New York Times</div><div class="notif-sub" id="notif-sub-a">Keep up with the NYT on and off Twitter.</div><div class="notif-time" id="notif-time-a">PINNED · 2 min ago</div></div>
+       <div class='allude-device'>
+            <div class="device" id="device">
+                <div class="statusbar">
+                    <span class="status-brand">ALLUDE</span>
+                    <span id="status-time">12:00 PM</span>
+                    <span>ᯤ ●●●</span>
                   </div>
-                  <div class="notif-face back" id="notif-face-b">
-                    <div class="notif-icon" id="notif-icon-b">🐦</div>
-                    <div class="notif-body"><div class="notif-title" id="notif-title-b">X · Trending</div><div class="notif-sub" id="notif-sub-b">"Allude" — 38K posts · AI device going viral.</div><div class="notif-time" id="notif-time-b">TRENDING · now</div></div>
+                
+                  <!-- HOME -->
+                  <div id="home-screen" class="screen active">
+                    <div class="viewer">
+                      <div class="home-viewer">
+                        <div class="home-left">
+                          <div class="bubbles">
+                            <div class="bubble">Hello! Today is <strong id="home-date">—</strong> and it's <strong id="home-weather">loading…</strong></div>
+                            <div class="bubble">On the calendar: <strong>Mary's Birthday Dinner @ 7pm at Gage &amp; Tollner</strong> 🎂
+                              <div class="bubble-route" id="route-btn"><img class="bubble-route-img" src='https://www.gearbrain.com/media-library/10-great-google-maps-tips.png?id=24426139&width=337&quality=50'>Schedule route from Home 🠒 Gage &amp; Tollner</div>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="bubble-time" id="bubble-ts">—</div>
+                            <div class="bird-wrap">
+                              <div class="bird-placeholder" id="bird"><img src="https://media.tenor.com/Bbaf7jFc3ZEAAAAj/twitter-png.gif" style="width:75%;height:auto;object-fit:contain;border-radius:8px;"></div>
+                              <div class="bird-hint">🠔 tap me to<br>ask allude</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="home-right">
+                          <div class="section-label">FOR YOU</div>
+                          <div class="notif-scene">
+                            <div class="notif-cube" id="notif-cube">
+                              <div class="notif-face" id="notif-face-a">
+                                <div class="notif-icon" id="notif-icon-a">📰</div>
+                                <div class="notif-body"><div class="notif-title" id="notif-title-a">The New York Times</div><div class="notif-sub" id="notif-sub-a">Keep up with the NYT on and off Twitter.</div><div class="notif-time" id="notif-time-a">PINNED · 2 min ago</div></div>
+                              </div>
+                              <div class="notif-face back" id="notif-face-b">
+                                <div class="notif-icon" id="notif-icon-b">🐦</div>
+                                <div class="notif-body"><div class="notif-title" id="notif-title-b">X · Trending</div><div class="notif-sub" id="notif-sub-b">"Allude" — 38K posts · AI device going viral.</div><div class="notif-time" id="notif-time-b">TRENDING · now</div></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="section-label">APPS</div>
+                          <div class="apps-row">
+                            <div class="app-icon" id="spotify-btn" style="background:#191414;"><svg viewBox="0 0 24 24" width="19" height="19"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path fill="white" d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z"/></svg></div>
+                            <div class="app-icon" id="app-x" style="background:#000;"><svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+                            <div class="app-icon" id="app-tiktok" style="background:#010101;"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#69C9D0" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/><path fill="#EE1D52" d="M15.82 2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V6.69a4.83 4.83 0 0 0 3.77-4.69h-3.77z"/></svg></div>
+                            <div class="app-icon" id="app-google" style="background:white;"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock">
+                      <div class="kw"><div id="home-kb"></div></div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- ASK ALLUDE -->
+                  <div id="ux-screen" class="screen">
+                    <div class="viewer" id="ux-viewer-el" style="height:215px;">
+                      <button class="back-btn" id="ux-back">🠔</button>
+                      <div class="ov" id="ov">
+                        <div class="ring" id="ring"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="sct" id="sct">× 0</div>
+                        <div class="scs" id="scs">hit the shake button below to count</div>
+                        <div class="mpills"><div class="mp" id="p2">× 2 = X insights</div><div class="mp" id="p3">× 3 = Google facts</div></div>
+                        <button class="askbtn" id="askbtn">Ask Allude</button>
+                        <div class="cue" id="cue">keep going ↓</div>
+                      </div>
+                      <div class="ux-viewer">
+                        <div class="ux-left"><div class="tweet-stage" id="ts"></div></div>
+                        <div class="ux-right">
+                          <div class="ux-logo-right">ASK<br>ALLUDE</div>
+                          <div class="cw" id="cw"></div>
+                          <!-- TYPE DISPLAY BAR — lives at bottom of right panel, responses grow above it -->
+                          <div class="ux-type-bar" id="type-display">
+                            <span class="type-placeholder" id="type-placeholder">type something…</span>
+                            <span id="type-text" style="display:none;"></span>
+                            <span class="cur" id="type-cur" style="display:none;"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock" style="height:145px;">
+                      <div class="kw">
+                        <div id="kb"></div>
+                      </div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <button class="sbtn" id="shakeBtn"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></button>
+                        <button class="sbtn" id="sendBtn"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- SPOTIFY -->
+                  <div id="spotify-screen" class="screen">
+                    <div class="viewer">
+                      <button class="back-btn" id="sp-back">🠔</button>
+                      <div class="sp-viewer">
+                        <div class="sp-left">
+                          <div class="sp-big-art"><img id="sp-big-img" src="https://i.scdn.co/image/ab67616d0000b273a5a9dd422431d2b9ae96e64b" onerror="this.style.display='none'" alt=""></div>
+                          <div class="sp-song-name" id="sp-song-name">State of Independence</div>
+                          <div class="sp-artist-name">Donna Summer</div>
+                          <div class="sp-prog-wrap"><div class="sp-bar"><div class="sp-bar-fill" id="sp-fill"></div></div><div class="sp-times"><span id="sp-cur">1:27</span><span id="sp-total">3:56</span></div></div>
+                          <div class="sp-ctrl">
+                            <button class="sp-c-btn" id="sp-prev"><svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16z"/><line x1="5" y1="19" x2="5" y2="5" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg></button>
+                            <button class="sp-c-btn sp-c-play" id="sp-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></button>
+                            <button class="sp-c-btn" id="sp-next"><svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4z"/><line x1="19" y1="5" x2="19" y2="19" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg></button>
+                          </div>
+                        </div>
+                        <div class="sp-right">
+                          <div class="sp-queue-label">DONNA SUMMER · QUEUE</div>
+                          <div class="sp-track" data-idx="1" data-dur="298" data-title="Hot Stuff"><div class="sp-t-num">1</div><div class="sp-t-art"><img src="https://lede-admin.stereogum.com/wp-content/uploads/sites/64/2020/02/Donna-Summer-Hot-Stuff-1580762732.jpg" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Hot Stuff</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:58</div></div>
+                          <div class="sp-track" data-idx="2" data-dur="298" data-title="Bad Girls"><div class="sp-t-num">2</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b2730c3a44d76807bef665eacfa3" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Bad Girls</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:58</div></div>
+                          <div class="sp-track" data-idx="3" data-dur="223" data-title="Last Dance"><div class="sp-t-num">3</div><div class="sp-t-art"><img src="https://upload.wikimedia.org/wikipedia/en/7/7e/Last_Dance_-_Donna_Summer.jpg" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Last Dance</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">3:43</div></div>
+                          <div class="sp-track" data-idx="4" data-dur="351" data-title="I Feel Love"><div class="sp-t-num">4</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b2731c3465800b6c039e4b18adad" alt=""></div><div class="sp-t-info"><div class="sp-t-name">I Feel Love</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">5:51</div></div>
+                          <div class="sp-track" data-idx="5" data-dur="321" data-title="On the Radio"><div class="sp-t-num">5</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b27308e6bf22c16e5b47c2d9c467" alt=""></div><div class="sp-t-info"><div class="sp-t-name">On the Radio</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">5:21</div></div>
+                          <div class="sp-track" data-idx="6" data-dur="523" data-title="MacArthur Park"><div class="sp-t-num">6</div><div class="sp-t-art"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTFKRL0MNRxOuILRNxHMOud62FU934G_hkxg&s" alt=""></div><div class="sp-t-info"><div class="sp-t-name">MacArthur Park</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">8:43</div></div>
+                          <div class="sp-track" data-idx="7" data-dur="269" data-title="She Works Hard for the Money"><div class="sp-t-num">7</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b273b33c99d166f15236efd104e6" alt=""></div><div class="sp-t-info"><div class="sp-t-name">She Works Hard for the Money</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:29</div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock">
+                      <div class="kw"><div id="sp-kb"></div></div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- X -->
+                  <div id="x-screen" class="screen">
+                    <div class="viewer" style="background:#000;">
+                      <button class="back-btn" id="x-back" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">🠔</button>
+                      <div style="width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:white;">Sign in to X</div>
+                        <div style="width:100%;max-width:220px;background:#162d50;border:1px solid #333;border-radius:6px;padding:7px 10px;"><div style="font-size:9px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:2px;">Phone, email, or username</div><div style="height:10px;"></div></div>
+                        <div style="width:100%;max-width:220px;background:#162d50;border:1px solid #333;border-radius:6px;padding:7px 10px;"><div style="font-size:9px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:2px;">Password</div><div style="height:10px;"></div></div>
+                        <div style="width:100%;max-width:220px;background:white;border-radius:20px;padding:7px;text-align:center;font-size:11px;font-weight:700;color:#000;cursor:pointer;">Sign in</div>
+                        <div style="font-size:9px;color:#1d9bf0;cursor:pointer;">Forgot password?</div>
+                        <div style="font-size:9px;color:#555;">Don't have an account? <span style="color:#1d9bf0;cursor:pointer;">Sign up</span></div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock">
+                      <div class="kw"><div id="x-kb"></div></div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- TIKTOK -->
+                  <div id="tiktok-screen" class="screen">
+                    <div class="viewer" style="background:#010101;">
+                      <button class="back-btn" id="tiktok-back" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);">🠔</button>
+                      <div style="width:100%;height:100%;background:#010101;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;">
+                        <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#69C9D0" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/><path fill="#EE1D52" d="M15.82 2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V6.69a4.83 4.83 0 0 0 3.77-4.69h-3.77z"/></svg>
+                        <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:white;">Log in to TikTok</div>
+                        <div style="width:100%;max-width:200px;display:flex;flex-direction:column;gap:6px;">
+                          <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><span style="font-size:11px;">📱</span><span style="font-size:9px;color:white;">Use phone / email / username</span></div>
+                          <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><svg viewBox="0 0 24 24" width="11" height="11"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg><span style="font-size:9px;color:white;">Continue with Google</span></div>
+                          <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span style="font-size:9px;color:white;">Continue with X</span></div>
+                        </div>
+                        <div style="font-size:9px;color:#555;">Don't have an account? <span style="color:#EE1D52;cursor:pointer;">Sign up</span></div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock">
+                      <div class="kw"><div id="tiktok-kb"></div></div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <!-- GOOGLE -->
+                  <div id="google-screen" class="screen">
+                    <div class="viewer" style="background:#fff;">
+                      <button class="back-btn" id="google-back" style="background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.12);color:#444;">🠔</button>
+                      <div style="width:100%;height:100%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;">
+                        <div style="display:flex;align-items:center;gap:1px;">
+                          <span style="font-size:22px;font-family:Arial,sans-serif;color:#4285F4;">G</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#EA4335;">o</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#FBBC05;">o</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#4285F4;">g</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#34A853;">l</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#EA4335;">e</span>
+                        </div>
+                        <div style="width:100%;max-width:260px;border:1px solid #dfe1e5;border-radius:20px;padding:7px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+                          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                          <div style="flex:1;height:12px;"></div>
+                          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#4285F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </div>
+                        <div style="display:flex;gap:8px;">
+                          <div style="background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;padding:6px 12px;font-size:9px;color:#3c4043;cursor:pointer;">Google Search</div>
+                          <div style="background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;padding:6px 12px;font-size:9px;color:#3c4043;cursor:pointer;">I'm Feeling Lucky</div>
+                        </div>
+                        <div style="display:flex;gap:12px;margin-top:4px;">
+                          <span style="font-size:9px;color:#70757a;cursor:pointer;">Gmail</span>
+                          <span style="font-size:9px;color:#70757a;cursor:pointer;">Images</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kbd-dock">
+                      <div class="kw"><div id="google-kb"></div></div>
+                      <div class="sc-col">
+                        <div class="dock-track"></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+                        <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="section-label">APPS</div>
-              <div class="apps-row">
-                <div class="app-icon" id="spotify-btn" style="background:#191414;"><svg viewBox="0 0 24 24" width="19" height="19"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path fill="white" d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z"/></svg></div>
-                <div class="app-icon" id="app-x" style="background:#000;"><svg viewBox="0 0 24 24" width="15" height="15" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
-                <div class="app-icon" id="app-tiktok" style="background:#010101;"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#69C9D0" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/><path fill="#EE1D52" d="M15.82 2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V6.69a4.83 4.83 0 0 0 3.77-4.69h-3.77z"/></svg></div>
-                <div class="app-icon" id="app-google" style="background:white;"><svg viewBox="0 0 24 24" width="15" height="15"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="kbd-dock">
-          <div class="kw"><div id="home-kb"></div></div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- ASK ALLUDE -->
-      <div id="ux-screen" class="screen">
-        <div class="viewer" id="ux-viewer-el" style="height:215px;">
-          <button class="back-btn" id="ux-back">🠔</button>
-          <div class="ov" id="ov">
-            <div class="ring" id="ring"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="sct" id="sct">× 0</div>
-            <div class="scs" id="scs">hit the shake button below to count</div>
-            <div class="mpills"><div class="mp" id="p2">× 2 = X insights</div><div class="mp" id="p3">× 3 = Google facts</div></div>
-            <button class="askbtn" id="askbtn">Ask Allude</button>
-            <div class="cue" id="cue">keep going ↓</div>
-          </div>
-          <div class="ux-viewer">
-            <div class="ux-left"><div class="tweet-stage" id="ts"></div></div>
-            <div class="ux-right">
-              <div class="ux-logo-right">ASK<br>ALLUDE</div>
-              <div class="cw" id="cw"></div>
-              <!-- TYPE DISPLAY BAR — lives at bottom of right panel, responses grow above it -->
-              <div class="ux-type-bar" id="type-display">
-                <span class="type-placeholder" id="type-placeholder">type something…</span>
-                <span id="type-text" style="display:none;"></span>
-                <span class="cur" id="type-cur" style="display:none;"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="kbd-dock" style="height:145px;">
-          <div class="kw">
-            <div id="kb"></div>
-          </div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <button class="sbtn" id="shakeBtn"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></button>
-            <button class="sbtn" id="sendBtn"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-          </div>
-        </div>
-      </div>
-    
-      <!-- SPOTIFY -->
-      <div id="spotify-screen" class="screen">
-        <div class="viewer">
-          <button class="back-btn" id="sp-back">🠔</button>
-          <div class="sp-viewer">
-            <div class="sp-left">
-              <div class="sp-big-art"><img id="sp-big-img" src="https://i.scdn.co/image/ab67616d0000b273a5a9dd422431d2b9ae96e64b" onerror="this.style.display='none'" alt=""></div>
-              <div class="sp-song-name" id="sp-song-name">State of Independence</div>
-              <div class="sp-artist-name">Donna Summer</div>
-              <div class="sp-prog-wrap"><div class="sp-bar"><div class="sp-bar-fill" id="sp-fill"></div></div><div class="sp-times"><span id="sp-cur">1:27</span><span id="sp-total">3:56</span></div></div>
-              <div class="sp-ctrl">
-                <button class="sp-c-btn" id="sp-prev"><svg viewBox="0 0 24 24"><path d="M19 20L9 12l10-8v16z"/><line x1="5" y1="19" x2="5" y2="5" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg></button>
-                <button class="sp-c-btn sp-c-play" id="sp-play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" fill="white"/></svg></button>
-                <button class="sp-c-btn" id="sp-next"><svg viewBox="0 0 24 24"><path d="M5 4l10 8-10 8V4z"/><line x1="19" y1="5" x2="19" y2="19" stroke="#aaa" stroke-width="2" stroke-linecap="round"/></svg></button>
-              </div>
-            </div>
-            <div class="sp-right">
-              <div class="sp-queue-label">DONNA SUMMER · QUEUE</div>
-              <div class="sp-track" data-idx="1" data-dur="298" data-title="Hot Stuff"><div class="sp-t-num">1</div><div class="sp-t-art"><img src="https://lede-admin.stereogum.com/wp-content/uploads/sites/64/2020/02/Donna-Summer-Hot-Stuff-1580762732.jpg" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Hot Stuff</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:58</div></div>
-              <div class="sp-track" data-idx="2" data-dur="298" data-title="Bad Girls"><div class="sp-t-num">2</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b2730c3a44d76807bef665eacfa3" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Bad Girls</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:58</div></div>
-              <div class="sp-track" data-idx="3" data-dur="223" data-title="Last Dance"><div class="sp-t-num">3</div><div class="sp-t-art"><img src="https://upload.wikimedia.org/wikipedia/en/7/7e/Last_Dance_-_Donna_Summer.jpg" alt=""></div><div class="sp-t-info"><div class="sp-t-name">Last Dance</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">3:43</div></div>
-              <div class="sp-track" data-idx="4" data-dur="351" data-title="I Feel Love"><div class="sp-t-num">4</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b2731c3465800b6c039e4b18adad" alt=""></div><div class="sp-t-info"><div class="sp-t-name">I Feel Love</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">5:51</div></div>
-              <div class="sp-track" data-idx="5" data-dur="321" data-title="On the Radio"><div class="sp-t-num">5</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b27308e6bf22c16e5b47c2d9c467" alt=""></div><div class="sp-t-info"><div class="sp-t-name">On the Radio</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">5:21</div></div>
-              <div class="sp-track" data-idx="6" data-dur="523" data-title="MacArthur Park"><div class="sp-t-num">6</div><div class="sp-t-art"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTFKRL0MNRxOuILRNxHMOud62FU934G_hkxg&s" alt=""></div><div class="sp-t-info"><div class="sp-t-name">MacArthur Park</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">8:43</div></div>
-              <div class="sp-track" data-idx="7" data-dur="269" data-title="She Works Hard for the Money"><div class="sp-t-num">7</div><div class="sp-t-art"><img src="https://i.scdn.co/image/ab67616d0000b273b33c99d166f15236efd104e6" alt=""></div><div class="sp-t-info"><div class="sp-t-name">She Works Hard for the Money</div><div class="sp-t-artist">Donna Summer</div></div><div class="sp-t-dur">4:29</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="kbd-dock">
-          <div class="kw"><div id="sp-kb"></div></div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- X -->
-      <div id="x-screen" class="screen">
-        <div class="viewer" style="background:#000;">
-          <button class="back-btn" id="x-back" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);">🠔</button>
-          <div style="width:100%;height:100%;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:white;">Sign in to X</div>
-            <div style="width:100%;max-width:220px;background:#162d50;border:1px solid #333;border-radius:6px;padding:7px 10px;"><div style="font-size:9px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:2px;">Phone, email, or username</div><div style="height:10px;"></div></div>
-            <div style="width:100%;max-width:220px;background:#162d50;border:1px solid #333;border-radius:6px;padding:7px 10px;"><div style="font-size:9px;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:2px;">Password</div><div style="height:10px;"></div></div>
-            <div style="width:100%;max-width:220px;background:white;border-radius:20px;padding:7px;text-align:center;font-size:11px;font-weight:700;color:#000;cursor:pointer;">Sign in</div>
-            <div style="font-size:9px;color:#1d9bf0;cursor:pointer;">Forgot password?</div>
-            <div style="font-size:9px;color:#555;">Don't have an account? <span style="color:#1d9bf0;cursor:pointer;">Sign up</span></div>
-          </div>
-        </div>
-        <div class="kbd-dock">
-          <div class="kw"><div id="x-kb"></div></div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- TIKTOK -->
-      <div id="tiktok-screen" class="screen">
-        <div class="viewer" style="background:#010101;">
-          <button class="back-btn" id="tiktok-back" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);">🠔</button>
-          <div style="width:100%;height:100%;background:#010101;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px;">
-            <svg viewBox="0 0 24 24" width="28" height="28"><path fill="#69C9D0" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.77a4.85 4.85 0 0 1-1.01-.08z"/><path fill="#EE1D52" d="M15.82 2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V6.69a4.83 4.83 0 0 0 3.77-4.69h-3.77z"/></svg>
-            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;color:white;">Log in to TikTok</div>
-            <div style="width:100%;max-width:200px;display:flex;flex-direction:column;gap:6px;">
-              <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><span style="font-size:11px;">📱</span><span style="font-size:9px;color:white;">Use phone / email / username</span></div>
-              <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><svg viewBox="0 0 24 24" width="11" height="11"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg><span style="font-size:9px;color:white;">Continue with Google</span></div>
-              <div style="border:1px solid #333;border-radius:4px;padding:6px 10px;display:flex;align-items:center;gap:8px;cursor:pointer;"><svg viewBox="0 0 24 24" width="11" height="11" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.857L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg><span style="font-size:9px;color:white;">Continue with X</span></div>
-            </div>
-            <div style="font-size:9px;color:#555;">Don't have an account? <span style="color:#EE1D52;cursor:pointer;">Sign up</span></div>
-          </div>
-        </div>
-        <div class="kbd-dock">
-          <div class="kw"><div id="tiktok-kb"></div></div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
-          </div>
-        </div>
-      </div>
-    
-      <!-- GOOGLE -->
-      <div id="google-screen" class="screen">
-        <div class="viewer" style="background:#fff;">
-          <button class="back-btn" id="google-back" style="background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.12);color:#444;">🠔</button>
-          <div style="width:100%;height:100%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;">
-            <div style="display:flex;align-items:center;gap:1px;">
-              <span style="font-size:22px;font-family:Arial,sans-serif;color:#4285F4;">G</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#EA4335;">o</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#FBBC05;">o</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#4285F4;">g</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#34A853;">l</span><span style="font-size:22px;font-family:Arial,sans-serif;color:#EA4335;">e</span>
-            </div>
-            <div style="width:100%;max-width:260px;border:1px solid #dfe1e5;border-radius:20px;padding:7px 14px;display:flex;align-items:center;gap:8px;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              <div style="flex:1;height:12px;"></div>
-              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#4285F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-            </div>
-            <div style="display:flex;gap:8px;">
-              <div style="background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;padding:6px 12px;font-size:9px;color:#3c4043;cursor:pointer;">Google Search</div>
-              <div style="background:#f8f9fa;border:1px solid #f8f9fa;border-radius:4px;padding:6px 12px;font-size:9px;color:#3c4043;cursor:pointer;">I'm Feeling Lucky</div>
-            </div>
-            <div style="display:flex;gap:12px;margin-top:4px;">
-              <span style="font-size:9px;color:#70757a;cursor:pointer;">Gmail</span>
-              <span style="font-size:9px;color:#70757a;cursor:pointer;">Images</span>
-            </div>
-          </div>
-        </div>
-        <div class="kbd-dock">
-          <div class="kw"><div id="google-kb"></div></div>
-          <div class="sc-col">
-            <div class="dock-track"></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-            <div class="dock-circle" style="opacity:0.4;cursor:default;"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2" fill="rgba(255,255,255,0.5)" stroke="none"/></svg></div>
-          </div>
-        </div>
-      </div>
-    </div>
+       </div>
     <!-- ALLUDE User Interaction - End -->
 
     <!-- Design Philosophy -->
