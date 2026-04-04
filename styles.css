@@ -3010,8 +3010,8 @@ button:focus-visible {
 .notif-title{font-size:11px;font-weight:600;color:#111;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .notif-sub{font-size:9px;color:#111;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .notif-time{font-size:9px;color:#111;margin-top:5px;letter-spacing:0.03em;}
-.apps-row{display:flex;gap:5px;width:100%;flex-shrink:0;}
-.app-icon{flex:1;aspect-ratio:0.75/0.75;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s,box-shadow 0.15s;border:1.5px solid rgba(255,255,255,0.2);overflow:hidden;background:#111;min-width:0;}
+.apps-row{display:flex;gap:5px;width:100%;flex-shrink:0;margin-top:10px;}
+.app-icon{flex:1;aspect-ratio:1/1;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s,box-shadow 0.15s;border:1.5px solid rgba(255,255,255,0.2);overflow:hidden;background:#111;min-width:0;}
 .app-icon:hover{transform:scale(1.06);box-shadow:0 4px 20px rgba(0,0,0,0.5);}
 .app-icon:active{transform:scale(0.93);}
 .ux-viewer{display:flex;width:100%;height:215px;max-height:215px;background:var(--blue);position:relative;overflow:hidden;}
