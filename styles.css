@@ -2998,7 +2998,7 @@ button:focus-visible {
 .bird-placeholder{width:42px;height:42px;border-radius:9px;background:rgba(255,255,255,0.10);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;flex-shrink:0;transition:transform 0.2s,background 0.2s;}
 .bird-placeholder:hover{transform:scale(1.08);background:rgba(255,255,255,0.22);}
 .bird-hint{font-size:9px;color:rgba(255,255,255,0.90);font-style:italic;line-height:1.3;}
-.section-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;color:rgba(255,255,255,0.95);text-transform:uppercase;flex-shrink:0;}
+.section-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;color:rgba(255,255,255,0.95);text-transform:uppercase;flex-shrink:0;margin-bottom:5px;}
 .notif-scene{perspective:400px;height:66px;flex-shrink:0;}
 .notif-cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.7s cubic-bezier(0.4,0,0.2,1);}
 .notif-face{position:absolute;inset:0;background:#fff;border-radius:8px;padding:6px 8px;display:flex;gap:8px;align-items:center;backface-visibility:hidden;}
