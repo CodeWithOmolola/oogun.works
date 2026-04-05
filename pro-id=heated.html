@@ -173,7 +173,922 @@
                 
                 <!-- Heated User Interaction - Start -->
 <div class="spec-card-right" style="padding: 0; overflow: hidden;">
-     <p>COMING SOON!</p>
+     <div class="hr">
+<div class="phone">
+  <div class="notch"></div>
+  <div class="bg-layer" id="bgLayer"></div>
+
+  <!-- LANDING — redesigned -->
+  <div class="landing" id="landing">
+    <div class="l-bg"></div>
+    <div class="l-grain"></div>
+    <div class="l-glow"></div>
+    <div class="l-embers" id="lEmbers"></div>
+
+    <div class="l-inner">
+      <!-- top strip -->
+      <div class="l-wordmark-row">
+        <div class="l-wordmark">heated</div>
+      </div>
+
+      <!-- hero type -->
+      <div class="l-hero">
+        <div class="l-rule"></div>
+        <div class="l-headline">
+          <em>engineer your</em>
+          atmosphere.
+        </div>
+      </div>
+
+      <!-- onboarding -->
+      <div class="l-bottom">
+        <div class="l-q-label">Set your environment</div>
+        <div class="l-options">
+          <div class="l-opt" data-mood="focus">
+            <span class="l-opt-text">Focused Work</span>
+            <span class="l-opt-arrow">➺</span>
+          </div>
+          <div class="l-opt" data-mood="creative">
+            <span class="l-opt-text">Creating Something</span>
+            <span class="l-opt-arrow">➺</span>
+          </div>
+          <div class="l-opt" data-mood="relax">
+            <span class="l-opt-text">Winding Down</span>
+            <span class="l-opt-arrow">➺</span>
+          </div>
+          <div class="l-opt" data-mood="sleep">
+            <span class="l-opt-text">Getting Ready for Bed</span>
+            <span class="l-opt-arrow">➺</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAYLIST SLIDE -->
+  <div class="slide" id="plSlide">
+    <div class="slide-bg"></div>
+
+    <div class="pl-hero">
+      <div class="pl-hero-img" id="plHeroImg"></div>
+      <div class="pl-hero-grad"></div>
+      <div class="pl-hero-back" id="plBack">🠔</div>
+      <div class="pl-hero-spotify">
+        <div class="pl-hero-sp-dot">
+          <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12.5" cy="12.5" r="12.5" fill="#1DB954"/><path fill="white" d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z"/></svg>
+        </div>
+        <span class="pl-hero-sp-lbl">SPOTIFY</span>
+      </div>
+      <div class="pl-hero-info">
+        <div class="pl-hero-name" id="plHeroName">Evening Relax</div>
+        <div class="pl-hero-meta" id="plHeroMeta">5 TRACKS · HEATED SESSION</div>
+      </div>
+    </div>
+
+    <div class="pl-ctrl-bar">
+      <div class="pl-ctrl-left">
+        <div class="pl-shuffle" id="plShuffle">
+          <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+          Shuffle
+        </div>
+        <div class="pl-play-all" id="plPlayAll">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+      <div class="pl-sort">Sort ↕</div>
+    </div>
+
+    <!-- THIS IS THE KEY: flex:1 + min-height:0 so it fills space and scrolls -->
+    <div class="pl-tracks" id="plTracks"></div>
+
+    <!-- now-bar as flex item, not absolutely positioned -->
+    <div class="pl-now-bar" id="plNowBar">
+      <div class="pl-now-art" id="plNowArt">♬</div>
+      <div class="pl-now-info">
+        <div class="pl-now-name" id="plNowName">Golden Hour</div>
+        <div class="pl-now-prog"><div class="pl-now-fill" id="plNowFill"></div></div>
+      </div>
+      <button class="pl-now-btn" id="plNowBtn">
+        <svg viewBox="0 0 24 24" id="plNowIco"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="screen">
+    <div class="sbar">
+      <span id="hTime" style="font-size:13px;">9:41 AM</span>
+      <div style="display:flex;gap:5px;align-items:center;font-size:13px;">
+        <span style="color:rgba(255,240,200,0.55)">ᯤ</span>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div class="tab on" id="s-home">
+      <div class="app-hdr">
+        <div class="app-title">heated</div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <div class="d-pills"><div class="dpill dpill-on">Active</div><div class="dpill dpill-s">Synced</div></div>
+          <div class="mini-vinyl-wrap" id="miniVinylHome">
+            <div class="mini-vinyl-disc" id="miniVinylDisc">
+              <div class="mini-vinyl-grooves"></div>
+              <div class="mini-vinyl-lbl"></div>
+              <div class="mini-vinyl-hole"></div>
+            </div>
+            <div class="mini-vinyl-hint">now playing</div>
+          </div>
+        </div>
+      </div>
+      <div class="ring-wrap"><div class="ring-core" id="ringCore">𓆰</div></div>
+      <div class="mood-lbl" id="moodLbl">relax mode</div>
+      <div class="tlbl" style="padding:0 22px;margin-bottom:10px;">Mood Presets</div>
+      <div class="mood-pills-row">
+        <div class="mp" data-mood="focus"><div class="mp-icon">✣</div><div class="mp-name">Focus</div></div>
+        <div class="mp on" data-mood="relax"><div class="mp-icon">𓆰</div><div class="mp-name">Relax</div></div>
+        <div class="mp" data-mood="creative"><div class="mp-icon">⚉</div><div class="mp-name">Create</div></div>
+        <div class="mp" data-mood="sleep"><div class="mp-icon">☾</div><div class="mp-name">Sleep</div></div>
+      </div>
+      <div class="sess-banner" id="sessBanner">● Session active</div>
+      <div class="ctrls">
+        <div class="ctrl">
+          <div class="ctrl-top"><div class="ctrl-name">Temperature</div><div class="ctrl-val"><b id="tVal">50</b>°C</div></div>
+          <div class="sl-wrap"><div class="sl-track" id="tT"><div class="sl-fill tf" id="tF" style="width:50%"></div><div class="sl-thumb tt" id="tTh" style="left:50%"></div></div></div>
+          <div class="tdots" id="tdots"><div class="tdot hot"></div><div class="tdot hot"></div><div class="tdot hot"></div><div class="tdot"></div><div class="tdot"></div></div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-top"><div class="ctrl-name">Ambience</div><div class="ctrl-val"><b id="lVal">Warm</b></div></div>
+          <div class="sl-wrap"><div class="sl-track" id="lT"><div class="sl-fill lf" id="lF" style="width:40%"></div><div class="sl-thumb lt" id="lTh" style="left:40%"></div></div></div>
+          <div class="sw-row">
+            <div class="sw on" style="background:radial-gradient(#e8a040,#7a3808)"></div>
+            <div class="sw" style="background:radial-gradient(#f0ecd0,#b8a870)"></div>
+            <div class="sw" style="background:radial-gradient(#c8e0f8,#4878b8)"></div>
+            <div class="sw" style="background:radial-gradient(#d880c0,#681880)"></div>
+            <div class="sw-lbl" id="swLbl">Candlelight</div>
+          </div>
+        </div>
+        <div class="ctrl">
+          <div class="ctrl-top"><div class="ctrl-name">Scent Timer</div><div class="ctrl-val"><b id="sVal">30</b> min</div></div>
+          <div class="sl-wrap"><div class="sl-track" id="sT"><div class="sl-fill sf" id="sF" style="width:25%"></div><div class="sl-thumb st" id="sTh" style="left:25%"></div></div></div>
+          <div class="timer-row">
+            <button class="tbtn" data-m="15">15m</button>
+            <button class="tbtn on" data-m="30">30m</button>
+            <button class="tbtn" data-m="60">1h</button>
+            <button class="tbtn" data-m="120">2h</button>
+          </div>
+        </div>
+      </div>
+      <div class="pl-builder">
+        <div class="pl-builder-hdr">
+          <div class="pl-builder-title">Session Playlist</div>
+          <div class="pl-builder-count" id="plBuilderCount">5 tracks</div>
+        </div>
+        <div class="pl-builder-tracks" id="plBuilderTracks"></div>
+        <div class="pl-builder-add" id="plBuilderAdd">
+          <div class="pl-add-ico">＋</div>
+          <div class="pl-add-lbl">Add a track</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="tab" id="s-schedule">
+      <div style="padding:15px 22px 4px"><div class="th" style="font-size:24px;font-style:italic;">Schedule</div></div>
+      <div class="sess-card" style="margin-top:14px;">
+        <div class="sess-top"><div class="sess-state" id="ssLbl">Next Session</div><div class="sess-ml">Evening Relax · 7:00 PM</div></div>
+        <div class="cd-val" id="cdV">01:24:00</div>
+        <div class="cd-sub" id="cdSub">until session begins</div>
+        <div class="sess-btns" id="ssBtns"></div>
+      </div>
+      <div class="tlbl" style="padding:0 22px;margin:14px 0 10px;">Weekly Routines</div>
+      <div class="sched-list" id="schedList"></div>
+      <div class="add-btn">&#43; Add new routine</div>
+    </div>
+
+    <!-- ACTIVITY -->
+    <div class="tab" id="s-activity">
+      <div style="padding:15px 22px 8px;display:flex;justify-content:space-between;align-items:baseline;">
+        <div class="th" style="font-size:24px;font-style:italic;">Activity</div>
+        <div class="ts">This week</div>
+      </div>
+      <div class="act-summary-card">
+        <div class="act-summary-text">This week you created <span class="act-summary-hl">18.4 hours</span> of atmosphere. Your most-used mood was <span class="act-summary-hl">Relax</span> — usually around 7pm.</div>
+        <div class="act-summary-sub">6 sessions · 5-day streak</div>
+      </div>
+      <div class="scent-hero-card">
+        <div class="scent-ring-wrap">
+          <svg class="scent-ring-svg" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="url(#scentGrad)" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="96.5"
+              transform="rotate(-90 60 60)" id="scentRingFill"/>
+            <defs>
+              <linearGradient id="scentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="rgba(135,75,175,0.7)"/>
+                <stop offset="100%" stop-color="rgba(200,130,240,0.95)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="scent-ring-inner">
+            <div class="scent-ring-pct" id="scentRingPct">68%</div>
+            <div class="scent-ring-lbl">remaining</div>
+          </div>
+        </div>
+        <div class="scent-hero-info">
+          <div class="scent-hero-name">Cedarwood &amp; Amber</div>
+          <div class="scent-hero-hrs" id="scentHrs">34.3 hrs left</div>
+          <div class="scent-hero-bar"><div class="scent-hero-fill" id="scentFill" style="width:68%"></div></div>
+          <div class="scent-hero-sub">at current usage rate</div>
+          <div class="scent-hero-reorder">Reorder →</div>
+        </div>
+      </div>
+      <div class="mood-map-card">
+        <div class="mood-map-ttl">Your Week</div>
+        <div class="mood-map-row" id="moodMapRow"></div>
+        <div class="mood-map-legend">
+          <div class="mm-leg"><div class="mm-dot" style="background:rgba(215,155,45,0.9)"></div><span>Relax</span></div>
+          <div class="mm-leg"><div class="mm-dot" style="background:rgba(95,125,215,0.9)"></div><span>Focus</span></div>
+          <div class="mm-leg"><div class="mm-dot" style="background:rgba(195,75,155,0.9)"></div><span>Create</span></div>
+          <div class="mm-leg"><div class="mm-dot" style="background:rgba(85,105,175,0.9)"></div><span>Sleep</span></div>
+        </div>
+      </div>
+      <div class="chart-card" style="margin-bottom:18px;">
+        <div class="chart-ttl">Preset Breakdown</div>
+        <div class="usage-rows">
+          <div class="urow"><div class="ulbl">Relax</div><div class="utrack"><div class="ubar" style="width:72%;background:linear-gradient(90deg,rgba(175,115,25,0.6),rgba(215,155,45,0.88))"></div></div><div class="upct">72%</div></div>
+          <div class="urow"><div class="ulbl">Focus</div><div class="utrack"><div class="ubar" style="width:16%;background:linear-gradient(90deg,rgba(55,75,175,0.6),rgba(95,125,215,0.88))"></div></div><div class="upct">16%</div></div>
+          <div class="urow"><div class="ulbl">Create</div><div class="utrack"><div class="ubar" style="width:8%;background:linear-gradient(90deg,rgba(155,35,75,0.6),rgba(195,75,115,0.88))"></div></div><div class="upct">8%</div></div>
+          <div class="urow"><div class="ulbl">Sleep</div><div class="utrack"><div class="ubar" style="width:4%;background:linear-gradient(90deg,rgba(55,65,135,0.6),rgba(85,105,175,0.88))"></div></div><div class="upct">4%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="tab" id="s-profile">
+      <div class="prof-hero">
+        <div class="prof-av">〄</div>
+        <div><div class="prof-name">Heated Crimson</div><div class="prof-sub">HC-2024 · Connected</div></div>
+      </div>
+      <div class="prof-sec">
+        <div class="prof-sec-ttl">Now Playing</div>
+        <div class="prof-card" style="overflow:visible;">
+          <div class="vinyl-wrap">
+            <div class="vinyl"><div class="vinyl-disc" id="vinylDisc"><div class="vinyl-grooves"></div><div class="vinyl-lbl" id="vinylLbl"><div class="vinyl-lbl-def" id="vinylDef">♬</div></div><div class="vinyl-hole"></div></div></div>
+          </div>
+          <div class="music-meta">
+            <div class="music-track" id="nowTrack">Golden Hour</div>
+            <div class="music-artist" id="nowArtist">JVKE · This Is What Falling Feels Like</div>
+          </div>
+          <div class="music-ctrls">
+            <button class="mc-btn" id="prevBtn"><svg viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
+            <button class="mc-btn play-btn" id="playBtn"><svg viewBox="0 0 24 24" id="playIco"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+            <button class="mc-btn" id="nextBtn"><svg viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
+          </div>
+          <div class="music-prog-wrap">
+            <div class="prog-bar" id="progBar"><div class="prog-fill" id="pFill" style="width:0%"></div></div>
+            <div class="prog-times"><span id="progCur">0:00</span><span>3:58</span></div>
+          </div>
+          <div class="mini-pl" id="miniPl"></div>
+          <div class="see-all" id="seeAllBtn">See full playlist ›</div>
+        </div>
+      </div>
+      <div class="prof-sec">
+        <div class="prof-sec-ttl">Spotify · Evening Relax</div>
+        <div class="prof-card">
+          <div class="prof-row">
+            <div class="prof-left">
+              <div class="prof-ico" style="background:rgba(29,185,84,0.12);border-color:rgba(29,185,84,0.25);">
+                <svg viewBox="0 0 24 24" width="14" height="14"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path fill="white" d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z"/></svg>
+              </div>
+              <div class="prof-text"><div class="prof-rn">Spotify</div><div class="prof-rs">Linked · Auto-play with sessions</div></div>
+            </div>
+            <div class="prof-arr">›</div>
+          </div>
+        </div>
+      </div>
+      <div class="prof-sec">
+        <div class="prof-sec-ttl">Device</div>
+        <div class="prof-card">
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">𓋼</div><div class="prof-text"><div class="prof-rn">Heated Crimson</div><div class="prof-rs">HC-2024-0412</div></div></div>
+            <div class="prof-rv" style="color:rgba(115,205,115,0.7)">Online</div>
+          </div>
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">ϟ</div><div class="prof-text"><div class="prof-rn">Connection</div></div></div>
+            <div class="prof-rv">BLE 5.2</div>
+          </div>
+        </div>
+      </div>
+      <div class="prof-sec">
+        <div class="prof-sec-ttl">Integrations</div>
+        <div class="prof-card">
+          <div class="prof-row">
+            <div class="prof-left">
+              <div class="prof-ico" style="font-size:10px;font-weight:700;color:rgba(215,75,25,0.8);font-style:italic;background:rgba(215,75,25,0.08);">Ai</div>
+              <div class="prof-text"><div class="prof-rn">Adobe Creative Cloud</div><div class="prof-rs">Linked · Sync focus sessions</div></div>
+            </div>
+            <div class="prof-arr">›</div>
+          </div>
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">⌂</div><div class="prof-text"><div class="prof-rn">IKEA Home Smart</div><div class="prof-rs">Linked · Scene automations</div></div></div>
+            <div class="prof-arr">›</div>
+          </div>
+        </div>
+      </div>
+      <div class="prof-sec">
+        <div class="prof-sec-ttl">Notifications</div>
+        <div class="prof-card">
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">⥁</div><div class="prof-text"><div class="prof-rn">Session reminders</div></div></div>
+            <div class="ntog on"><div class="ndot"></div></div>
+          </div>
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">╽</div><div class="prof-text"><div class="prof-rn">Low scent alerts</div></div></div>
+            <div class="ntog on"><div class="ndot"></div></div>
+          </div>
+          <div class="prof-row">
+            <div class="prof-left"><div class="prof-ico">☳</div><div class="prof-text"><div class="prof-rn">Weekly summary</div></div></div>
+            <div class="ntog"><div class="ndot"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bnav">
+      <div class="bb on" data-t="home"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg><div class="bb-lbl">Home</div></div>
+      <div class="bb" data-t="schedule"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div class="bb-lbl">Schedule</div></div>
+      <div class="bb" data-t="activity"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><div class="bb-lbl">Activity</div></div>
+      <div class="bb" data-t="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 018 0v2"/></svg><div class="bb-lbl">Profile</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+(function(){
+
+const moods={
+  focus:{icon:'✣',lbl:'focus mode',
+    bg:'url("https://images.pexels.com/photos/3778077/pexels-photo-3778077.jpeg") center/cover no-repeat',
+    temp:57,light:70,scent:60,sw:2},
+  relax:{icon:'𓆰',lbl:'relax mode',
+    bg:'url("https://images.pexels.com/photos/35913477/pexels-photo-35913477.jpeg") center/cover no-repeat',
+    temp:50,light:40,scent:30,sw:0},
+  creative:{icon:'⚉',lbl:'creative mode',
+    bg:'url("https://images.pexels.com/photos/11775862/pexels-photo-11775862.jpeg") center/cover no-repeat',
+    temp:53,light:75,scent:45,sw:3},
+  sleep:{icon:'☾',lbl:'sleep mode',
+    bg:'url("https://images.pexels.com/photos/19935822/pexels-photo-19935822.jpeg") center/cover no-repeat',
+    temp:35,light:10,scent:20,sw:1},
+};
+const TEMP_MIN=33,TEMP_MAX=66;
+const swLbls=['Candlelight','Warm White','Cool Daylight','Creative'];
+const dayNames=['M','T','W','T','F','S','S'];
+
+const routines=[
+  {id:'focus',name:'Morning Focus',time:'7:00 AM · 90 min',icon:'𖤓',days:[1,1,1,1,1,0,0],on:true,
+   pl:[
+    {name:'Deep Work Vol.1',artist:'Lo-fi Beats',dur:'3:22',art:'https://i.scdn.co/image/ab67616d0000b273ba5db46f4b838ef6027e6f96'},
+    {name:'Arena',artist:'Ember Nova',dur:'2:45',art:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwo1lEMV4x8eCSsBJ6w13UjURMF9ccXfD1-Q&s'},
+    {name:'Clocks',artist:'Coldplay',dur:'5:07',art:'https://i.scdn.co/image/ab67616d0000b273de09e02aa7febf30b7c02d82'},
+    {name:'Retrograde',artist:'James Blake',dur:'4:24',art:'https://i.scdn.co/image/ab67616d0000b273d134dbb0fad78dda23d777ff'},
+   ]},
+  {id:'relax',name:'Evening Relax',time:'7:00 PM · 2 hrs',icon:'✩',days:[1,1,1,1,1,1,1],on:true,
+   pl:[
+    {name:'Golden Hour',artist:'JVKE',dur:'2:53',art:'https://i1.sndcdn.com/artworks-VphCeigNiaWQ-0-t500x500.jpg'},
+    {name:'All Night',artist:'Beyoncé',dur:'5:22',art:'https://i.scdn.co/image/ab67616d0000b2738db37bc9a58543471bee78c5'},
+    {name:'Dedicated to You',artist:'Freddie Hubbard',dur:'3:22',art:'https://images.genius.com/20f22cdede73444d67507564827a65a2.525x525x1.jpg'},
+    {name:'Posthumous Forgiveness',artist:'Tame Impala',dur:'6:06',art:'https://i.scdn.co/image/ab67616d0000b27358267bd34420a00d5cf83a49'},
+    {name:'Sticky',artist:'Ravyn Lenae',dur:'3:16',art:'https://i.scdn.co/image/ab67616d0000b273fb297f4796af1cc7d27d94a4'},
+   ]},
+  {id:'creative',name:'Weekend Create',time:'10:00 AM · 3 hrs',icon:'⧂',days:[0,0,0,0,0,1,1],on:false,
+   pl:[
+    {name:'Diddy Bop',artist:'Noname',dur:'3:28',art:'https://upload.wikimedia.org/wikipedia/en/5/53/Noname_-_Telefone.jpg'},
+    {name:'Anita (Remix)',artist:'Smino, T-Pain',dur:'3:37',art:'https://i1.sndcdn.com/artworks-F6Irds4JetqT-0-t500x500.jpg'},
+    {name:'Nakamarra',artist:'Hiatus Kaiyote',dur:'4:34',art:'https://f4.bcbits.com/img/a3761351106_16.jpg'},
+    {name:'The Bird',artist:'Anderson.Paak',dur:'3:37',art:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOrU42o-coSDxjv3bSk82TGpxRbvvkTGnZJw&s'},
+    {name:'Selfish',artist:'Little Simz, Cleo Sol',dur:'3:46',art:'https://upload.wikimedia.org/wikipedia/en/f/f7/Little_Simz_%E2%80%93_Grey_Area.png'},
+    {name:'DtMF',artist:'Bad Bunny',dur:'3:57',art:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX4sFUwnfURSh6gsAJCKYy1Hz4G3m3rhw7Xw&s'},
+   ]},
+  {id:'sleep',name:'Wind Down',time:'10:00 PM · 45 min',icon:'◯',days:[1,1,1,1,1,1,1],on:true,
+   pl:[
+    {name:'Know That You Are Loved',artist:'Cleo Sol',dur:'3:22',art:'https://i.scdn.co/image/ab67616d0000b2733335e63f35e6cd4d0e8f8aa8'},
+    {name:'My Way',artist:'Venna',dur:'3:33',art:'https://i.scdn.co/image/ab67616d00001e024eae6e0335f23494e01e807a'},
+    {name:'My World (Beyond)',artist:'anaiis',dur:'4:05',art:'https://f4.bcbits.com/img/a2559101069_10.jpg'},
+    {name:'Distance',artist:'Yebba',dur:'4:15',art:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT81JeeD9xlBBWaNrFX14eSzraY546uBnHieQ&s'},
+    {name:'Sound & Color',artist:'Alabama Shakes',dur:'3:04',art:'https://upload.wikimedia.org/wikipedia/en/2/2d/Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg'},
+   ]},
+];
+
+const sampleSongs=[
+  {name:'Die With A Smile',artist:'Lady Gaga, Bruno Mars',dur:'4:11',art:'https://m.media-amazon.com/images/I/51fMCyTaaIL._UF1000,1000_QL80_.jpg'},
+  {name:'Sound & Color',artist:'Alabama Shakes',dur:'3:04',art:'https://upload.wikimedia.org/wikipedia/en/2/2d/Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg'},
+  {name:'DtMF',artist:'Bad Bunny',dur:'3:57',art:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQX4sFUwnfURSh6gsAJCKYy1Hz4G3m3rhw7Xw&s'},
+  {name:'Know That You Are Loved',artist:'Cleo Sol',dur:'3:22',art:'https://i.scdn.co/image/ab67616d0000b2733335e63f35e6cd4d0e8f8aa8'},
+  {name:'Anita (Remix)',artist:'Smino, T-Pain',dur:'3:37',art:'https://i1.sndcdn.com/artworks-F6Irds4JetqT-0-t500x500.jpg'},
+  {name:'Sticky',artist:'Ravyn Lenae',dur:'3:16',art:'https://i.scdn.co/image/ab67616d0000b273fb297f4796af1cc7d27d94a4'},
+  {name:'Retrograde',artist:'James Blake',dur:'4:24',art:'https://i.scdn.co/image/ab67616d0000b273d134dbb0fad78dda23d777ff'},
+  {name:'My Way',artist:'Venna',dur:'3:33',art:'https://i.scdn.co/image/ab67616d00001e024eae6e0335f23494e01e807a'},
+];
+
+let cdS=5040,cdRun=false,cdPaused=false,cdInt=null;
+let playing=false,progSecs=0,totalSecs=238,progInt=null;
+let currentTrackIdx=0;
+let scentPct=68;
+
+/* ── TIME ── */
+function updateTime(){
+  const n=new Date();let h=n.getHours(),m=n.getMinutes();
+  const ap=h>=12?'PM':'AM';h=h%12||12;
+  document.getElementById('hTime').textContent=h+':'+(m<10?'0':'')+m+' '+ap;
+}
+updateTime();setInterval(updateTime,30000);
+
+/* ── EMBERS ── */
+(function(){
+  const container=document.getElementById('lEmbers');if(!container)return;
+  const colors=['rgba(220,100,18,0.8)','rgba(200,80,12,0.6)','rgba(240,140,30,0.5)','rgba(180,60,8,0.5)'];
+  for(let i=0;i<14;i++){
+    const e=document.createElement('div');e.className='ember';
+    const size=Math.random()*2+0.8;
+    e.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:${Math.random()*25}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};--dx:${(Math.random()-0.5)*50}px;
+      animation-duration:${Math.random()*7+6}s;animation-delay:${Math.random()*10}s;
+      box-shadow:0 0 ${size*3}px ${colors[0]};`;
+    container.appendChild(e);
+  }
+})();
+
+document.querySelectorAll('.l-opt').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    document.querySelectorAll('.l-opt').forEach(o=>o.classList.remove('selected'));
+    opt.classList.add('selected');
+    setTimeout(()=>{
+      applyMood(opt.dataset.mood,true);
+      const l=document.getElementById('landing');
+      l.classList.add('out');
+      setTimeout(()=>l.style.display='none',750);
+    },320);
+  });
+});
+
+/* ── TAB NAV ── */
+document.querySelectorAll('.bb').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const t=b.dataset.t;
+    document.querySelectorAll('.bb').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    document.getElementById('s-'+t).classList.add('on');
+    if(t==='activity')setTimeout(animateScentRing,150);
+  });
+});
+
+/* ── MOOD ── */
+function applyMood(mood,instant=false){
+  const m=moods[mood];
+  const bg=document.getElementById('bgLayer');
+  const ring=document.getElementById('ringCore');
+  const lbl=document.getElementById('moodLbl');
+  const ctrls=document.querySelector('.ctrls');
+  if(!instant){ctrls.classList.add('mood-flash');setTimeout(()=>ctrls.classList.remove('mood-flash'),650);}
+  bg.style.background=m.bg;
+  ring.textContent=m.icon;
+  lbl.textContent=m.lbl;
+  setSlAnimated('t',m.temp,TEMP_MIN,TEMP_MAX,'temp');
+  setSlAnimated('l',m.light,0,100,'light');
+  setSlAnimated('s',m.scent,0,120,'scent');
+  updSw(m.sw);
+  document.querySelectorAll('.mp').forEach(c=>c.classList.toggle('on',c.dataset.mood===mood));
+  buildHomePl(mood);
+}
+document.querySelectorAll('.mp').forEach(c=>c.addEventListener('click',()=>applyMood(c.dataset.mood)));
+
+// init bg
+document.getElementById('bgLayer').style.background=moods.relax.bg;
+
+/* ── SLIDERS ── */
+function setSlAnimated(id,val,min,max,type){
+  const pct=((val-min)/(max-min))*100;
+  document.getElementById(id+'F').style.width=pct+'%';
+  document.getElementById(id+'Th').style.left=pct+'%';
+  updLbl(type,val,pct);
+}
+function updLbl(type,val,pct){
+  if(type==='temp'){document.getElementById('tVal').textContent=Math.round(val);updTd(pct);}
+  if(type==='light'){const i=Math.round((pct/100)*3);document.getElementById('lVal').textContent=['Dim','Warm','Bright','Vivid'][Math.min(i,3)];}
+  if(type==='scent'){document.getElementById('sVal').textContent=Math.round(val);}
+}
+function updTd(pct){
+  const dots=[...document.querySelectorAll('.tdot')];
+  const hot=Math.round((pct/100)*5);
+  dots.forEach((d,i)=>d.classList.toggle('hot',i<hot));
+}
+function updSw(idx){
+  document.querySelectorAll('.sw').forEach((s,i)=>s.classList.toggle('on',i===idx));
+  document.getElementById('swLbl').textContent=swLbls[idx];
+}
+function mkSl(tId,fId,thId,min,max,type){
+  const tr=document.getElementById(tId);let drag=false;
+  function upd(x){
+    const r=tr.getBoundingClientRect();
+    const pct=Math.max(0,Math.min(1,(x-r.left)/r.width));
+    const val=min+pct*(max-min);
+    document.getElementById(fId).style.width=(pct*100)+'%';
+    document.getElementById(thId).style.left=(pct*100)+'%';
+    updLbl(type,val,pct*100);
+  }
+  tr.addEventListener('mousedown',e=>{drag=true;upd(e.clientX);e.preventDefault();});
+  tr.addEventListener('touchstart',e=>{drag=true;upd(e.touches[0].clientX);},{passive:true});
+  document.addEventListener('mousemove',e=>{if(drag)upd(e.clientX);});
+  document.addEventListener('touchmove',e=>{if(drag)upd(e.touches[0].clientX);},{passive:true});
+  document.addEventListener('mouseup',()=>drag=false);
+  document.addEventListener('touchend',()=>drag=false);
+}
+mkSl('tT','tF','tTh',TEMP_MIN,TEMP_MAX,'temp');
+mkSl('lT','lF','lTh',0,100,'light');
+mkSl('sT','sF','sTh',0,120,'scent');
+document.querySelectorAll('.sw').forEach((s,i)=>s.addEventListener('click',()=>updSw(i)));
+document.querySelectorAll('.tbtn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.tbtn').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    const mVal=parseInt(b.dataset.m);
+    const pct=(mVal/120)*100;
+    document.getElementById('sF').style.width=pct+'%';
+    document.getElementById('sTh').style.left=pct+'%';
+    document.getElementById('sVal').textContent=mVal;
+  });
+});
+setSlAnimated('t',50,TEMP_MIN,TEMP_MAX,'temp');
+setSlAnimated('l',40,0,100,'light');
+setSlAnimated('s',30,0,120,'scent');
+
+/* ── SCHEDULE ── */
+function fmt(s){const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60;return(h<10?'0':'')+h+':'+(m<10?'0':'')+m+':'+(sc<10?'0':'')+sc;}
+function updSessUI(){
+  document.getElementById('cdV').textContent=fmt(cdS);
+  const btns=document.getElementById('ssBtns');
+  const lbl=document.getElementById('ssLbl');
+  const sub=document.getElementById('cdSub');
+  const banner=document.getElementById('sessBanner');
+  if(!cdRun&&!cdPaused){
+    lbl.textContent='Next Session';sub.textContent='until session begins';
+    banner.classList.remove('on');
+    btns.innerHTML='<button class="sbtn" id="bSkip">Skip</button><button class="sbtn sbtn-p" id="bStart">Start Now</button>';
+    document.getElementById('bStart').onclick=startSess;
+    document.getElementById('bSkip').onclick=()=>{cdS=86400;document.getElementById('cdV').textContent=fmt(cdS);};
+  }else if(cdRun){
+    lbl.textContent='Session Active';sub.textContent='Evening Relax · running';
+    banner.classList.add('on');
+    btns.innerHTML='<button class="sbtn sbtn-stop" id="bStop">Stop</button><button class="sbtn sbtn-pause" id="bPause">Pause</button>';
+    document.getElementById('bStop').onclick=stopSess;
+    document.getElementById('bPause').onclick=pauseSess;
+  }else{
+    lbl.textContent='Session Paused';sub.textContent='tap resume to continue';
+    banner.classList.add('on');
+    btns.innerHTML='<button class="sbtn sbtn-stop" id="bStop">Stop</button><button class="sbtn sbtn-p" id="bRes">Resume</button>';
+    document.getElementById('bStop').onclick=stopSess;
+    document.getElementById('bRes').onclick=resumeSess;
+  }
+}
+function startSess(){
+  cdS=5400;cdRun=true;cdPaused=false;
+  cdInt=setInterval(()=>{
+    if(cdS>0){
+      cdS--;document.getElementById('cdV').textContent=fmt(cdS);
+      if(cdS%30===0&&scentPct>5){scentPct=Math.max(0,scentPct-1);document.getElementById('scentFill').style.width=scentPct+'%';document.getElementById('scentHrs').textContent=(scentPct*0.5).toFixed(1)+' hrs';}
+    }else stopSess();
+  },1000);
+  updSessUI();
+}
+function pauseSess(){cdRun=false;cdPaused=true;clearInterval(cdInt);updSessUI();}
+function resumeSess(){cdRun=true;cdPaused=false;cdInt=setInterval(()=>{if(cdS>0){cdS--;document.getElementById('cdV').textContent=fmt(cdS);}else stopSess();},1000);updSessUI();}
+function stopSess(){cdRun=false;cdPaused=false;clearInterval(cdInt);cdS=5040;updSessUI();}
+updSessUI();
+
+/* ── SCHEDULE LIST ── */
+function buildSched(){
+  const list=document.getElementById('schedList');list.innerHTML='';
+  routines.forEach((r,ri)=>{
+    const el=document.createElement('div');el.className='si';
+    el.innerHTML=`<div class="si-ico">${r.icon}</div>
+    <div class="si-info">
+      <div class="si-name">${r.name}</div>
+      <div class="si-time">${r.time}</div>
+      <div class="si-pl" data-ri="${ri}">Playlist · ${r.pl.length} tracks ›</div>
+      <div class="si-days">${dayNames.map((d,i)=>`<div class="dp${r.days[i]?' on':''}">${d}</div>`).join('')}</div>
+    </div>
+    <div class="tog${r.on?' on':''}" data-ri="${ri}"><div class="togdot"></div></div>`;
+    el.querySelector('.si-pl').addEventListener('click',()=>openPl(ri));
+    el.querySelector('.tog').addEventListener('click',function(){this.classList.toggle('on');routines[ri].on=this.classList.contains('on');});
+    list.appendChild(el);
+  });
+}
+buildSched();
+
+/* ── PLAYLIST SLIDE ── */
+const heroImages={
+  focus:'url("https://images.pexels.com/photos/10267183/pexels-photo-10267183.jpeg")',
+  relax:'url("https://images.pexels.com/photos/28514915/pexels-photo-28514915.jpeg")',
+  creative:'url("https://images.pexels.com/photos/36613657/pexels-photo-36613657.jpeg")',
+  sleep:'url("https://images.pexels.com/photos/33971617/pexels-photo-33971617.jpeg")',
+};
+let plShuffled=false,plCurrentRi=1,plPlaying=false,plTrackIdx=0;
+
+function openPl(ri){
+  plCurrentRi=ri;
+  const r=routines[ri];
+  document.getElementById('plHeroImg').style.backgroundImage=heroImages[r.id]||heroImages.relax;
+  document.getElementById('plHeroName').textContent=r.name;
+  document.getElementById('plHeroMeta').textContent=r.pl.length+' TRACKS · HEATED SESSION';
+  buildPlTracks(ri);
+  syncPlNowBar();
+  document.getElementById('plSlide').classList.add('open');
+}
+
+document.getElementById('plBack').addEventListener('click',()=>{
+  document.getElementById('plSlide').classList.remove('open');
+  buildSched();buildMiniPl();buildHomePl();
+});
+document.getElementById('seeAllBtn').addEventListener('click',()=>openPl(1));
+document.getElementById('plShuffle').addEventListener('click',function(){plShuffled=!plShuffled;this.classList.toggle('on',plShuffled);});
+document.getElementById('plPlayAll').addEventListener('click',()=>{
+  plTrackIdx=0;plPlaying=true;playing=true;progSecs=0;currentTrackIdx=0;
+  const t=routines[plCurrentRi].pl[0];
+  if(t){document.getElementById('nowTrack').textContent=t.name;document.getElementById('nowArtist').textContent=t.artist;}
+  document.getElementById('vinylDisc').classList.add('playing');
+  document.getElementById('playIco').innerHTML='<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>';
+  document.getElementById('pFill').style.width='0%';document.getElementById('progCur').textContent='0:00';
+  document.getElementById('miniVinylHome').classList.add('on');
+  startPlayer();syncPlNowBar();buildPlTracks(plCurrentRi);buildMiniPl();
+});
+document.getElementById('plNowBtn').addEventListener('click',()=>{
+  plPlaying=!plPlaying;playing=plPlaying;
+  const ico=document.getElementById('plNowIco');
+  const disc=document.getElementById('vinylDisc');
+  if(plPlaying){
+    ico.innerHTML='<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>';
+    document.getElementById('playIco').innerHTML='<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>';
+    disc.classList.add('playing');document.getElementById('miniVinylHome').classList.add('on');startPlayer();
+  }else{
+    ico.innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    document.getElementById('playIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    disc.classList.remove('playing');document.getElementById('miniVinylHome').classList.remove('on');clearInterval(progInt);
+  }
+  buildPlTracks(plCurrentRi);
+});
+
+function syncPlNowBar(){
+  const r=routines[plCurrentRi];const t=r.pl[plTrackIdx]||r.pl[0];if(!t)return;
+  const nameEl=document.getElementById('plNowName');const artEl=document.getElementById('plNowArt');
+  if(nameEl)nameEl.textContent=t.name;
+  if(artEl)artEl.innerHTML=t.art?`<img src="${t.art}" onerror="this.parentNode.textContent='♬'">`:'♬';
+  const ico=document.getElementById('plNowIco');
+  if(ico)ico.innerHTML=plPlaying?'<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>':'<polygon points="5 3 19 12 5 21 5 3"/>';
+}
+
+setInterval(()=>{
+  if(plPlaying&&document.getElementById('plSlide').classList.contains('open')){
+    const fill=document.getElementById('plNowFill');
+    if(fill)fill.style.width=((progSecs/totalSecs)*100).toFixed(1)+'%';
+  }
+},1000);
+
+function buildPlTracks(ri){
+  const r=routines[ri];
+  const wrap=document.getElementById('plTracks');if(!wrap)return;
+  wrap.innerHTML='';
+  r.pl.forEach((t,ti)=>{
+    const isPlaying=(plPlaying&&ti===plTrackIdx);
+    const el=document.createElement('div');el.className='tr'+(isPlaying?' playing':'');
+    el.innerHTML=`
+      <div class="tr-num">${isPlaying?'<div class="eq"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div>':(ti+1)}</div>
+      <div class="tr-art">${t.art?`<img src="${t.art}" onerror="this.parentNode.textContent='♬'">`:'♬'}</div>
+      <div class="tr-info"><div class="tr-name">${t.name}</div><div class="tr-artist">${t.artist}</div></div>
+      <div class="tr-dur">${t.dur}</div>
+      <div class="tr-more">···</div>`;
+    el.addEventListener('click',()=>{
+      plTrackIdx=ti;plPlaying=true;playing=true;currentTrackIdx=ti;progSecs=0;
+      document.getElementById('nowTrack').textContent=t.name;document.getElementById('nowArtist').textContent=t.artist;
+      document.getElementById('vinylDisc').classList.add('playing');
+      document.getElementById('playIco').innerHTML='<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>';
+      document.getElementById('pFill').style.width='0%';document.getElementById('progCur').textContent='0:00';
+      document.getElementById('miniVinylHome').classList.add('on');
+      startPlayer();syncPlNowBar();buildPlTracks(ri);buildMiniPl();
+    });
+    wrap.appendChild(el);
+  });
+  sampleSongs.filter(s=>!r.pl.find(p=>p.name===s.name)).slice(0,3).forEach(s=>{
+    const addEl=document.createElement('div');addEl.className='add-tr';
+    addEl.innerHTML=`
+      <div class="add-tr-ico">+</div>
+      <div class="add-tr-info"><div class="add-tr-name">${s.name}</div><div class="add-tr-artist">${s.artist}</div></div>
+      <div class="add-tr-btn">Add</div>`;
+    addEl.addEventListener('click',()=>{
+      r.pl.push(s);
+      document.getElementById('plHeroMeta').textContent=r.pl.length+' TRACKS · HEATED SESSION';
+      buildPlTracks(ri);buildMiniPl();buildHomePl();
+    });
+    wrap.appendChild(addEl);
+  });
+}
+
+/* ── MINI PLAYLIST ── */
+function syncVinyl(){
+  const t=routines[1].pl[currentTrackIdx];
+  const lbl=document.getElementById('vinylLbl');
+  const def=document.getElementById('vinylDef');
+  if(t&&t.art){
+    lbl.innerHTML=`<img src="${t.art}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentNode.innerHTML='<div class=\\'vinyl-lbl-def\\'>♬</div>'">`;
+  }else{
+    lbl.innerHTML='<div class="vinyl-lbl-def">♬</div>';
+  }
+}
+
+function syncVinyl(){
+  const t=routines[1].pl[currentTrackIdx];
+  const lbl=document.getElementById('vinylLbl');
+  if(t&&t.art){
+    lbl.innerHTML=`<img src="${t.art}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentNode.innerHTML='<div class=\'vinyl-lbl-def\'>♬</div>'">`;
+  }else{
+    lbl.innerHTML='<div class="vinyl-lbl-def">♬</div>';
+  }
+}
+
+function buildMiniPl(){
+  const wrap=document.getElementById('miniPl');wrap.innerHTML='';
+  routines[1].pl.slice(0,3).forEach((t,i)=>{
+    const el=document.createElement('div');el.className='mini-tr';
+    const isPlaying=(i===currentTrackIdx&&playing);
+    el.innerHTML=`<div class="mini-num" style="color:${isPlaying?'rgba(255,220,140,0.9)':'rgba(255,235,200,0.3)'}">${isPlaying?'▶':(i+1)}</div>
+    <div class="mini-info"><div class="mini-name">${t.name}</div><div class="mini-artist">${t.artist}</div></div>
+    <div class="mini-dur">${t.dur}</div>`;
+    el.addEventListener('click',()=>{
+      currentTrackIdx=i;
+      document.getElementById('nowTrack').textContent=t.name;document.getElementById('nowArtist').textContent=t.artist;
+      progSecs=0;document.getElementById('pFill').style.width='0%';document.getElementById('progCur').textContent='0:00';
+      if(playing)startPlayer();buildMiniPl();
+    });
+    wrap.appendChild(el);
+  });
+}
+buildMiniPl();
+
+/* ── HOME PLAYLIST BUILDER ── */
+let currentBuilderMood='relax';
+function buildHomePl(mood){
+  currentBuilderMood=mood||currentBuilderMood;
+  const ri=routines.findIndex(r=>r.id===currentBuilderMood);
+  const playlist=ri>=0?routines[ri].pl:routines[1].pl;
+  const wrap=document.getElementById('plBuilderTracks');
+  const count=document.getElementById('plBuilderCount');
+  if(!wrap)return;
+  wrap.innerHTML='';
+  count.textContent=playlist.length+' tracks';
+  playlist.forEach((t,i)=>{
+    const el=document.createElement('div');
+    el.className='pl-home-tr'+(i===currentTrackIdx?' playing':'');
+    el.innerHTML=`
+      <div class="pl-home-num">${i===currentTrackIdx?'▶':(i+1)}</div>
+      <div class="pl-home-art">${t.art?`<img src="${t.art}" onerror="this.parentNode.textContent='♬'">`:'♬'}</div>
+      <div class="pl-home-info"><div class="pl-home-name">${t.name}</div><div class="pl-home-artist">${t.artist}</div></div>
+      <div class="pl-home-dur">${t.dur}</div>`;
+    el.addEventListener('click',()=>{
+      currentTrackIdx=i;
+      const nowT=document.getElementById('nowTrack');const nowA=document.getElementById('nowArtist');
+      if(nowT)nowT.textContent=t.name;if(nowA)nowA.textContent=t.artist;
+      progSecs=0;
+      const pf=document.getElementById('pFill');const pc=document.getElementById('progCur');
+      if(pf)pf.style.width='0%';if(pc)pc.textContent='0:00';
+      if(playing)startPlayer();buildHomePl();buildMiniPl();
+    });
+    wrap.appendChild(el);
+  });
+}
+buildHomePl('relax');
+
+document.getElementById('plBuilderAdd').addEventListener('click',()=>{
+  const ri=routines.findIndex(r=>r.id===currentBuilderMood);
+  const playlist=ri>=0?routines[ri].pl:routines[1].pl;
+  const available=sampleSongs.filter(s=>!playlist.find(p=>p.name===s.name));
+  if(available.length>0){playlist.push(available[0]);buildHomePl();buildMiniPl();}
+});
+
+/* ── NOTIFICATION TOGGLES ── */
+document.querySelectorAll('.ntog').forEach(t=>{
+  t.addEventListener('click',()=>{
+    const on=t.classList.contains('on');t.classList.toggle('on');
+    const dot=t.querySelector('.ndot');
+    dot.style.left=on?'1px':'15px';
+    dot.style.background=on?'rgba(255,255,255,0.5)':'rgba(130,220,130,0.95)';
+  });
+});
+
+/* ── MUSIC PLAYER ── */
+const disc=document.getElementById('vinylDisc');
+const pFill=document.getElementById('pFill');
+const progCur=document.getElementById('progCur');
+function fmtTime(s){const m=Math.floor(s/60),sc=s%60;return m+':'+(sc<10?'0':'')+sc;}
+
+function syncVinyl(){
+  const t=routines[1].pl[currentTrackIdx];
+  const lbl=document.getElementById('vinylLbl');
+  if(t&&t.art){
+    lbl.innerHTML=`<img src="${t.art}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.parentNode.innerHTML='<div class=\\'vinyl-lbl-def\\'>♬</div>'">`;
+  }else{
+    lbl.innerHTML='<div class="vinyl-lbl-def">♬</div>';
+  }
+}
+syncVinyl();
+
+function startPlayer(){
+  if(progInt)clearInterval(progInt);
+  progInt=setInterval(()=>{
+    if(progSecs<totalSecs){
+      progSecs++;pFill.style.width=((progSecs/totalSecs)*100)+'%';progCur.textContent=fmtTime(progSecs);
+    }else{
+      clearInterval(progInt);playing=false;disc.classList.remove('playing');
+      document.getElementById('playIco').innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    }
+  },1000);
+}
+document.getElementById('playBtn').addEventListener('click',()=>{
+  playing=!playing;
+  const ico=document.getElementById('playIco');
+  const miniWrap=document.getElementById('miniVinylHome');
+  if(playing){
+    ico.innerHTML='<line x1="6" y1="19" x2="6" y2="5"/><line x1="18" y1="19" x2="18" y2="5"/>';
+    disc.classList.add('playing');if(miniWrap)miniWrap.classList.add('on');startPlayer();
+  }else{
+    ico.innerHTML='<polygon points="5 3 19 12 5 21 5 3"/>';
+    disc.classList.remove('playing');if(miniWrap)miniWrap.classList.remove('on');clearInterval(progInt);
+  }
+  buildMiniPl();
+});
+document.getElementById('miniVinylHome').addEventListener('click',()=>{
+  document.querySelectorAll('.bb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.querySelector('.bb[data-t="profile"]').classList.add('on');
+  document.getElementById('s-profile').classList.add('on');
+});
+document.getElementById('prevBtn').addEventListener('click',()=>{
+  if(currentTrackIdx>0){currentTrackIdx--;const t=routines[1].pl[currentTrackIdx];if(t){document.getElementById('nowTrack').textContent=t.name;document.getElementById('nowArtist').textContent=t.artist;}}
+  progSecs=0;pFill.style.width='0%';progCur.textContent='0:00';if(playing)startPlayer();buildMiniPl();syncVinyl();
+});
+document.getElementById('nextBtn').addEventListener('click',()=>{
+  if(currentTrackIdx<routines[1].pl.length-1){currentTrackIdx++;const t=routines[1].pl[currentTrackIdx];if(t){document.getElementById('nowTrack').textContent=t.name;document.getElementById('nowArtist').textContent=t.artist;}}
+  progSecs=0;pFill.style.width='0%';progCur.textContent='0:00';if(playing)startPlayer();buildMiniPl();syncVinyl();
+});
+document.getElementById('progBar').addEventListener('click',function(e){
+  const r=this.getBoundingClientRect();const pct=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+  progSecs=Math.round(pct*totalSecs);pFill.style.width=(pct*100)+'%';progCur.textContent=fmtTime(progSecs);
+  if(playing)startPlayer();
+});
+
+/* ── MOOD MAP ── */
+const weekData=[
+  {day:'Mon',mood:'relax',hrs:3.2,scent:'Cedarwood'},
+  {day:'Tue',mood:'focus',hrs:2.8,scent:'Pine'},
+  {day:'Wed',mood:'relax',hrs:4.0,scent:'Cedarwood'},
+  {day:'Thu',mood:'creative',hrs:1.5,scent:'Jasmine'},
+  {day:'Fri',mood:'relax',hrs:3.8,scent:'Cedarwood'},
+  {day:'Sat',mood:null,hrs:0,scent:null},
+  {day:'Sun',mood:'sleep',hrs:3.1,scent:'Lavender'},
+];
+const moodColors={
+  relax:{bg:'radial-gradient(circle at 35% 35%, rgba(240,170,50,0.9), rgba(160,80,10,0.85))',glow:'rgba(215,155,45,0.5)'},
+  focus:{bg:'radial-gradient(circle at 35% 35%, rgba(120,150,240,0.9), rgba(40,60,160,0.85))',glow:'rgba(95,125,215,0.5)'},
+  creative:{bg:'radial-gradient(circle at 35% 35%, rgba(220,90,160,0.9), rgba(130,30,90,0.85))',glow:'rgba(195,75,155,0.5)'},
+  sleep:{bg:'radial-gradient(circle at 35% 35%, rgba(100,120,200,0.9), rgba(40,55,130,0.85))',glow:'rgba(85,105,175,0.5)'},
+};
+function buildMoodMap(){
+  const row=document.getElementById('moodMapRow');if(!row)return;row.innerHTML='';
+  weekData.forEach(d=>{
+    const day=document.createElement('div');day.className='mm-day';
+    const mc=d.mood?moodColors[d.mood]:null;
+    day.innerHTML=`<div class="mm-orb-wrap">
+      ${d.mood?`<div class="mm-orb" style="background:${mc.bg};box-shadow:0 0 12px ${mc.glow},0 2px 8px rgba(0,0,0,0.4);">
+        <div class="mm-tooltip">${d.hrs}h · ${d.mood}<br>${d.scent}</div></div>`
+      :`<div class="mm-empty"><div class="mm-tooltip">No session</div></div>`}
+    </div><div class="mm-lbl">${d.day}</div>`;
+    row.appendChild(day);
+  });
+}
+buildMoodMap();
+
+/* ── SCENT RING ANIMATION ── */
+function animateScentRing(){
+  const ring=document.getElementById('scentRingFill');const pctEl=document.getElementById('scentRingPct');if(!ring)return;
+  ring.style.strokeDashoffset='301.6';pctEl.textContent='0%';
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;const prog=Math.min((ts-start)/1200,1);const ease=1-Math.pow(1-prog,3);
+    ring.style.strokeDashoffset=(301.6-(301.6-96.5)*ease).toFixed(1);pctEl.textContent=Math.round(68*ease)+'%';
+    if(prog<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+})();
 </div>
 <!-- Heated User Interaction - End -->
                 
