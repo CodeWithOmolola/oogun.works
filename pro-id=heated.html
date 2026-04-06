@@ -919,7 +919,7 @@ function buildMiniPl(){
   routines[1].pl.slice(0,3).forEach((t,i)=>{
     const el=document.createElement('div');el.className='mini-tr';
     const isPlaying=(i===currentTrackIdx&&playing);
-    el.innerHTML=`<div class="mini-num" style="color:${isPlaying?'rgba(255,220,140,0.9)':'rgba(255,235,200,0.3)'}">${isPlaying?'▶':(i+1)}</div>
+    el.innerHTML=`<div class="mini-num" style="color:${isPlaying?'rgba(255,220,140,0.9)':'rgba(255,235,200,0.3)'}">${isPlaying?'➤':(i+1)}</div>
     <div class="mini-info"><div class="mini-name">${t.name}</div><div class="mini-artist">${t.artist}</div></div>
     <div class="mini-dur">${t.dur}</div>`;
     el.addEventListener('click',()=>{
@@ -948,7 +948,7 @@ function buildHomePl(mood){
     const el=document.createElement('div');
     el.className='pl-home-tr'+(i===currentTrackIdx?' playing':'');
     el.innerHTML=`
-      <div class="pl-home-num">${i===currentTrackIdx?'▶':(i+1)}</div>
+      <div class="pl-home-num">${i===currentTrackIdx?'➤':(i+1)}</div>
       <div class="pl-home-art">${t.art?`<img src="${t.art}" onerror="this.parentNode.textContent='♬'">`:'♬'}</div>
       <div class="pl-home-info"><div class="pl-home-name">${t.name}</div><div class="pl-home-artist">${t.artist}</div></div>
       <div class="pl-home-dur">${t.dur}</div>`;
