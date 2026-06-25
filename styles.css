@@ -527,3 +527,36 @@ body {
   .note-row { grid-template-columns: 70px 1fr auto; gap: 1rem; }
   .hero-meta { gap: 1.25rem; }
 }
+@media (max-width: 600px) {
+  /* Nav — hide text links, keep logo + CTA */
+  .nav-link { display: none; }
+  .nav { padding: 1rem 1.25rem; }
+
+  /* Footer — stack vertically */
+  .footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+  }
+  .footer-links { justify-content: center; }
+
+  /* Note rows — single column, hide arrow */
+  .note-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 1.25rem 0;
+  }
+  .note-row-date { padding-top: 0; }
+  .note-row-arrow { display: none; }
+  .note-row-excerpt { max-width: 100%; }
+
+  /* Section vertical padding */
+  .about,
+  .problem-strip { padding-top: 3rem; padding-bottom: 3rem; }
+  .cta-block { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+
+  /* Hero meta — slightly larger */
+  .hero-meta-label { font-size: 0.72rem; }
+  .hero-meta-val { font-size: 0.95rem; }
+}
